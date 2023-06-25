@@ -3,7 +3,7 @@ from typing import Optional
 from datetime import date
 from copy import deepcopy
 
-from classes.tarefa import Tarefa, TarefaOrganizador, TarefaComLembrete, TarefaComPrazo
+from tarefa_classes.tarefa import Tarefa, TarefaOrganizador, TarefaComLembrete, TarefaComPrazo
 
 class TarefaCommand(ABC):
 

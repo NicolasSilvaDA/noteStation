@@ -97,4 +97,4 @@ class TarefaOrganizador:
         elif por_prazo:
             self.tarefas.sort(key=lambda x: x.prazo)
 
-from classes.tarefa_command import *
+from tarefa_classes.tarefa_command import *

@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from classes.tarefa import Tarefa, TarefaBase
+from tarefa_classes.tarefa import Tarefa, TarefaBase
 
 class TarefaFactory(ABC):
 

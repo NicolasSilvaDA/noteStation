@@ -1,11 +1,5 @@
-from classes.tarefa import TarefaBase, TarefaComLembrete, TarefaComPrazo, TarefaOrganizador
-from classes.tarefa_factory import TarefaComPrioridadeFactory, TarefaTrabalhoFactory
-from classes.tarefa_command import (
-    CriarTarefaCommand,
-    ExcluirTarefaCommand,
-    EditarTarefaCommand,
-    MarcarConcluidaCommand
-)
+from tarefa_classes import *
+
 
 tarefa = TarefaBase("Exemplo 1", "aaaaaa")
 
