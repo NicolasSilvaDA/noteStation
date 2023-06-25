@@ -1,9 +1,9 @@
 from abc import ABC, abstractmethod
 from typing import Optional
 from datetime import date
+from copy import deepcopy
 
-from tarefa import Tarefa, TarefaOrganizador
-
+from classes.tarefa import Tarefa, TarefaOrganizador, TarefaComLembrete, TarefaComPrazo
 
 class TarefaCommand(ABC):
 
@@ -29,10 +29,10 @@ class CriarTarefaCommand(TarefaCommand):
 
 
 class EditarTarefaCommand(TarefaCommand):
-    def __init__(self, tarefa: Tarefa, nTitulo: str, nDescricao: str, nLembrete: str, nPrazo: Optional[date]):
+    def __init__(self, tarefa: Tarefa, nTitulo: str, nDescricao: str, nLembrete: Optional[str], nPrazo: Optional[date]):
         # A anotação Optional[date] indica que o tipo de dado pode ser date ou None
         self.tarefa = tarefa
-        self.copiaTarefa = tarefa
+        self.copiaTarefa = deepcopy(tarefa)
         self.nTitulo = nTitulo
         self.nDescricao = nDescricao
         self.nLembrete = nLembrete
@@ -46,16 +46,21 @@ class EditarTarefaCommand(TarefaCommand):
             self.tarefa.descricao = self.nDescricao
 
         if self.nLembrete:
-            self.tarefa.lembrete = self.nLembrete
+            if isinstance(self.tarefa, TarefaComLembrete):
+                self.tarefa.atualizar_lembrete(self.nLembrete)
 
         if self.nPrazo:
-            self.tarefa.prazo = self.nPrazo
+            if isinstance(self.tarefa, TarefaComPrazo):
+                self.tarefa.atualizar_prazo(self.nPrazo)
 
     def desfazer_operacao(self) -> None:
         self.tarefa.titulo = self.copiaTarefa.titulo
         self.tarefa.descricao = self.copiaTarefa.descricao
-        self.tarefa.lembrete = self.copiaTarefa.lembrete
-        self.tarefa.prazo = self.copiaTarefa.prazo
+        if isinstance(self.tarefa, TarefaComLembrete):
+            self.tarefa.atualizar_lembrete(self.copiaTarefa.lembrete)
+        
+        if isinstance(self.tarefa, TarefaComPrazo):
+            self.tarefa.atualizar_prazo(self.copiaTarefa.prazo)
         
 
 class ExcluirTarefaCommand(TarefaCommand):

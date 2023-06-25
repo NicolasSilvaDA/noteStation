@@ -1,7 +1,5 @@
 from abc import ABC, abstractmethod
-from datetime import datetime
-
-from tarefa_command import *
+from datetime import datetime, date
 
 class Tarefa(ABC):
 
@@ -15,15 +13,14 @@ class TarefaBase(Tarefa):
         self.titulo = titulo
         self.descricao = descricao
         self.data_criacao = datetime.now().strftime("%d/%m/%Y %H:%M")
-        self.lembrete = ""
-        self.prazo = None
         self.concluida = False
 
     def exibir(self) -> str:
         status = "Concluída" if self.concluida else "Pendente"
-        return f'Descrição: {self.descricao}\n \
-            Status: {status}\n \
-            Data de criação: {self.data_criacao}'
+        return f' Título: {self.titulo}\n\
+Descrição: {self.descricao}\n\
+Status: {status}\n\
+Data de criação: {self.data_criacao}'
     
 
 class TarefaDecorator(Tarefa):
@@ -35,24 +32,30 @@ class TarefaDecorator(Tarefa):
         return self._tarefa.exibir()
 
 
-class TarefaTrabalho(TarefaDecorator):
-    def __init__(self, tarefa: Tarefa, projeto: str):
+class TarefaComLembrete(TarefaDecorator):
+    def __init__(self, tarefa: Tarefa, lembrete: str):
         super().__init__(tarefa)
-        self.projeto = projeto
+        self.lembrete = lembrete
 
     def exibir(self) -> str:
-        tarefa_trabalho_info = f'Projeto: {self.projeto}\n'
-        return self._tarefa.exibir() + tarefa_trabalho_info
+        tarefa_lembrete = f'Lembrete: {self.lembrete}'
+        return self._tarefa.exibir() + '\n' + tarefa_lembrete
+    
+    def alterar_lembrete(self, nLembrete) -> None:
+        self.lembrete = nLembrete
     
 
-class TarefaComPrioridade(TarefaDecorator):
-    def __init__(self, tarefa: Tarefa, prioridade: int):
+class TarefaComPrazo(TarefaDecorator):
+    def __init__(self, tarefa: Tarefa, prazo: date):
         super().__init__(tarefa)
-        self.prioridade = prioridade
+        self.prazo = prazo
 
     def exibir(self) -> str:
-        tarefa_prioridade_info = f'Prioridade: {self.prioridade}\n'
-        return self._tarefa.exibir() + "\n" +  tarefa_prioridade_info
+        tarefa_prazo = f'Prazo: {self.prazo}'
+        return self._tarefa.exibir() + "\n" +  tarefa_prazo
+    
+    def atualizar_prazo(self, nPrazo: date):
+        self.prazo = nPrazo
     
 
 class TarefaOrganizador:
@@ -93,3 +96,5 @@ class TarefaOrganizador:
 
         elif por_prazo:
             self.tarefas.sort(key=lambda x: x.prazo)
+
+from classes.tarefa_command import *

@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from tarefa import Tarefa, TarefaBase, TarefaTrabalho, TarefaComPrioridade
+from classes.tarefa import Tarefa, TarefaBase
 
 class TarefaFactory(ABC):
 
@@ -9,11 +9,21 @@ class TarefaFactory(ABC):
         pass
 
 
+class TarefaTrabalho(TarefaBase):
+    def exibir(self) -> str:
+        return f'Tarefa de Trabalho\n{super().exibir()}'
+    
+
+class TarefaComPrioridade(TarefaBase):
+    def exibir(self) -> str:
+        return f'Tarefa com prioridade\n{super().exibir()}'
+
+
 class TarefaTrabalhoFactory(TarefaFactory):
-    def criar_tarefa(self) -> Tarefa:
-        return TarefaTrabalho(TarefaBase())
+    def criar_tarefa(self, titulo, descricao) -> Tarefa:
+        return TarefaTrabalho(titulo, descricao)
     
 
 class TarefaComPrioridadeFactory(TarefaFactory):
-    def criar_tarefa(self) -> Tarefa:
-        return TarefaComPrioridade(TarefaBase())
+    def criar_tarefa(self, titulo: str, descricao: str) -> Tarefa:
+        return TarefaComPrioridade(titulo, descricao)
