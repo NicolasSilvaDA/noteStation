@@ -1,5 +1,4 @@
 from tarefa_classes import *
-from tarefa_classes.tarefa import TarefaDecorator
 
 
 tarefa = TarefaBase("Exemplo 1", "aaaaaa")
