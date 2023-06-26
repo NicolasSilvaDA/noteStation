@@ -3,7 +3,7 @@ from typing import Optional
 from datetime import date
 from copy import deepcopy
 
-from tarefa_classes.tarefa import Tarefa, TarefaOrganizador, TarefaComLembrete, TarefaComPrazo
+from tarefa_classes.tarefa import Tarefa, TarefaOrganizador, TarefaComLembrete, TarefaComPrazo, TarefaDecorator
 
 class TarefaCommand(ABC):
 
@@ -14,6 +14,13 @@ class TarefaCommand(ABC):
     @abstractmethod
     def desfazer_operacao(self):
         pass
+
+    def checkTarefaDecorator(self, tarefa: Tarefa) -> Tarefa:
+        if not isinstance(tarefa, TarefaDecorator):
+            return tarefa
+        
+        chTarefa = tarefa._tarefa
+        return self.checkTarefaDecorator(chTarefa)
 
 
 class CriarTarefaCommand(TarefaCommand):
@@ -30,7 +37,8 @@ class CriarTarefaCommand(TarefaCommand):
 
 class EditarTarefaCommand(TarefaCommand):
     def __init__(self, tarefa: Tarefa, nTitulo: str, nDescricao: str, nLembrete: Optional[str], nPrazo: Optional[date]):
-        # A anotação Optional[date] indica que o tipo de dado pode ser date ou None
+        # A anotação Optional[date] indica que o tipo de dado pode ser date ou None, a mesma
+        # coisa para o Optional[str]
         self.tarefa = tarefa
         self.copiaTarefa = deepcopy(tarefa)
         self.nTitulo = nTitulo
@@ -39,28 +47,68 @@ class EditarTarefaCommand(TarefaCommand):
         self.nPrazo = nPrazo
 
     def executar(self) -> None:
+
+        tarefa = self.checkTarefaDecorator(self.tarefa)
+
         if self.nTitulo:
-            self.tarefa.titulo = self.nTitulo
+            tarefa.titulo = self.nTitulo
         
         if self.nDescricao:
-            self.tarefa.descricao = self.nDescricao
+            tarefa.descricao = self.nDescricao
 
         if self.nLembrete:
             if isinstance(self.tarefa, TarefaComLembrete):
-                self.tarefa.atualizar_lembrete(self.nLembrete)
+                self.tarefa.alterar_lembrete(self.nLembrete)
+
+            elif isinstance(self.tarefa._tarefa, TarefaComLembrete):
+                self.tarefa._tarefa.alterar_lembrete(self.nLembrete)
 
         if self.nPrazo:
             if isinstance(self.tarefa, TarefaComPrazo):
                 self.tarefa.atualizar_prazo(self.nPrazo)
 
+            elif isinstance(self.tarefa._tarefa, TarefaComPrazo):
+                self.tarefa._tarefa.atualizar_prazo(self.nPrazo)
+
     def desfazer_operacao(self) -> None:
-        self.tarefa.titulo = self.copiaTarefa.titulo
-        self.tarefa.descricao = self.copiaTarefa.descricao
-        if isinstance(self.tarefa, TarefaComLembrete):
-            self.tarefa.atualizar_lembrete(self.copiaTarefa.lembrete)
-        
-        if isinstance(self.tarefa, TarefaComPrazo):
-            self.tarefa.atualizar_prazo(self.copiaTarefa.prazo)
+
+        tarefa = self.checkTarefaDecorator(self.tarefa)
+        copiaTarefa = self.checkTarefaDecorator(self.copiaTarefa)
+
+        tarefa.titulo = copiaTarefa.titulo
+        tarefa.descricao = copiaTarefa.descricao
+
+        if self.nLembrete:
+            if isinstance(self.tarefa, TarefaComLembrete) and isinstance(self.copiaTarefa, TarefaComLembrete):
+                self.tarefa.alterar_lembrete(self.copiaTarefa.lembrete)
+
+            elif isinstance(self.tarefa, TarefaComLembrete) and not isinstance(self.copiaTarefa, TarefaComLembrete):
+                self.tarefa.alterar_lembrete(self.copiaTarefa._tarefa.lembrete)
+
+            elif not isinstance(self.tarefa, TarefaComLembrete) and isinstance(self.copiaTarefa, TarefaComLembrete):
+                self.tarefa._tarefa.alterar_lembrete(self.copiaTarefa.lembrete)
+
+            elif not isinstance(self.tarefa, TarefaComLembrete) and not isinstance(self.copiaTarefa, TarefaComLembrete):
+                self.tarefa._tarefa.alterar_lembrete(self.copiaTarefa._tarefa.lembrete)
+
+            else:
+                raise Exception("Tarefa não possui lembrete para atualizar")
+
+        if self.nPrazo:
+            if isinstance(self.tarefa, TarefaComPrazo) and isinstance(self.copiaTarefa, TarefaComPrazo):
+                self.tarefa.atualizar_prazo(self.copiaTarefa.prazo)
+
+            elif isinstance(self.tarefa, TarefaComPrazo) and not isinstance(self.copiaTarefa, TarefaComPrazo):
+                self.tarefa.atualizar_prazo(self.copiaTarefa._tarefa.prazo)
+
+            elif not isinstance(self.tarefa, TarefaComPrazo) and isinstance(self.copiaTarefa, TarefaComPrazo):
+                self.tarefa._tarefa.atualizar_prazo(self.copiaTarefa.prazo)
+
+            elif not isinstance(self.tarefa, TarefaComPrazo) and not isinstance(self.copiaTarefa, TarefaComPrazo):
+                self.tarefa._tarefa.atualizar_prazo(self.copiaTarefa._tarefa._tarefa.prazo)
+
+            else:
+                raise Exception("Tarefa não possui prazo para atualizar")
         
 
 class ExcluirTarefaCommand(TarefaCommand):
@@ -80,7 +128,9 @@ class MarcarConcluidaCommand(TarefaCommand):
         self.tarefa = tarefa
 
     def executar(self) -> None:
-        self.tarefa.concluida = True
+        tarefa = self.checkTarefaDecorator(self.tarefa)
+        tarefa.concluida = True
 
     def desfazer_operacao(self) -> None:
-        self.tarefa.concluida = False
+        tarefa = self.checkTarefaDecorator(self.tarefa)
+        tarefa.concluida = False

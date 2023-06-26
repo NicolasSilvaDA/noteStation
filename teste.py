@@ -1,4 +1,5 @@
 from tarefa_classes import *
+from tarefa_classes.tarefa import TarefaDecorator
 
 
 tarefa = TarefaBase("Exemplo 1", "aaaaaa")
@@ -32,10 +33,12 @@ print(f'\n({tar_prio.__class__.__name__})')
 org = TarefaOrganizador()
 
 tarefa2 = TarefaBase("Exemplo 4", "DDDDDD")
+tarefa2 = TarefaComLembrete(tarefa2, "Importante")
+tarefa2 = TarefaComPrazo(tarefa2, "28/06/2023")
 
 criar_tar_com = CriarTarefaCommand(tarefa2, org)
 excluir_tar_com = ExcluirTarefaCommand(tarefa2, org)
-editar_tar_com = EditarTarefaCommand(tarefa2, "Teste 4", "GGGGGG", None, None)
+editar_tar_com = EditarTarefaCommand(tarefa2, "Teste 4", "GGGGGG", "Nada demais", "01/07/2023")
 concluir_tar_com = MarcarConcluidaCommand(tarefa2)
 
 print(tarefa2.exibir())
