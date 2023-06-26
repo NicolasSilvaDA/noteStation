@@ -34,7 +34,7 @@ org = TarefaOrganizador()
 
 tarefa2 = TarefaBase("Exemplo 4", "DDDDDD")
 tarefa2 = TarefaComLembrete(tarefa2, "Importante")
-tarefa2 = TarefaComPrazo(tarefa2, "28/06/2023")
+tarefa2 = TarefaComPrazo(tarefa2, "26/06/2023")
 
 criar_tar_com = CriarTarefaCommand(tarefa2, org)
 excluir_tar_com = ExcluirTarefaCommand(tarefa2, org)

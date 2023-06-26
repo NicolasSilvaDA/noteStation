@@ -77,38 +77,40 @@ class EditarTarefaCommand(TarefaCommand):
 
         tarefa.titulo = copiaTarefa.titulo
         tarefa.descricao = copiaTarefa.descricao
-
+            
         if self.nLembrete:
-            if isinstance(self.tarefa, TarefaComLembrete) and isinstance(self.copiaTarefa, TarefaComLembrete):
-                self.tarefa.alterar_lembrete(self.copiaTarefa.lembrete)
+            try:
+                if isinstance(self.tarefa, TarefaComLembrete) and isinstance(self.copiaTarefa, TarefaComLembrete):
+                    self.tarefa.alterar_lembrete(self.copiaTarefa.lembrete)
 
-            elif isinstance(self.tarefa, TarefaComLembrete) and not isinstance(self.copiaTarefa, TarefaComLembrete):
-                self.tarefa.alterar_lembrete(self.copiaTarefa._tarefa.lembrete)
+                elif isinstance(self.tarefa, TarefaComLembrete) and not isinstance(self.copiaTarefa, TarefaComLembrete):
+                    self.tarefa.alterar_lembrete(self.copiaTarefa._tarefa.lembrete)
 
-            elif not isinstance(self.tarefa, TarefaComLembrete) and isinstance(self.copiaTarefa, TarefaComLembrete):
-                self.tarefa._tarefa.alterar_lembrete(self.copiaTarefa.lembrete)
+                elif not isinstance(self.tarefa, TarefaComLembrete) and isinstance(self.copiaTarefa, TarefaComLembrete):
+                    self.tarefa._tarefa.alterar_lembrete(self.copiaTarefa.lembrete)
 
-            elif not isinstance(self.tarefa, TarefaComLembrete) and not isinstance(self.copiaTarefa, TarefaComLembrete):
-                self.tarefa._tarefa.alterar_lembrete(self.copiaTarefa._tarefa.lembrete)
-
-            else:
-                raise Exception("Tarefa não possui lembrete para atualizar")
+                elif not isinstance(self.tarefa, TarefaComLembrete) and not isinstance(self.copiaTarefa, TarefaComLembrete):
+                    self.tarefa._tarefa.alterar_lembrete(self.copiaTarefa._tarefa.lembrete)
+                    
+            except:
+                raise Exception("Tarefa não possui lembrete.")
 
         if self.nPrazo:
-            if isinstance(self.tarefa, TarefaComPrazo) and isinstance(self.copiaTarefa, TarefaComPrazo):
-                self.tarefa.atualizar_prazo(self.copiaTarefa.prazo)
+            try:
+                if isinstance(self.tarefa, TarefaComPrazo) and isinstance(self.copiaTarefa, TarefaComPrazo):
+                    self.tarefa.atualizar_prazo(self.copiaTarefa.prazo)
 
-            elif isinstance(self.tarefa, TarefaComPrazo) and not isinstance(self.copiaTarefa, TarefaComPrazo):
-                self.tarefa.atualizar_prazo(self.copiaTarefa._tarefa.prazo)
+                elif isinstance(self.tarefa, TarefaComPrazo) and not isinstance(self.copiaTarefa, TarefaComPrazo):
+                    self.tarefa.atualizar_prazo(self.copiaTarefa._tarefa.prazo)
 
-            elif not isinstance(self.tarefa, TarefaComPrazo) and isinstance(self.copiaTarefa, TarefaComPrazo):
-                self.tarefa._tarefa.atualizar_prazo(self.copiaTarefa.prazo)
+                elif not isinstance(self.tarefa, TarefaComPrazo) and isinstance(self.copiaTarefa, TarefaComPrazo):
+                    self.tarefa._tarefa.atualizar_prazo(self.copiaTarefa.prazo)
 
-            elif not isinstance(self.tarefa, TarefaComPrazo) and not isinstance(self.copiaTarefa, TarefaComPrazo):
-                self.tarefa._tarefa.atualizar_prazo(self.copiaTarefa._tarefa._tarefa.prazo)
+                elif not isinstance(self.tarefa, TarefaComPrazo) and not isinstance(self.copiaTarefa, TarefaComPrazo):
+                    self.tarefa._tarefa.atualizar_prazo(self.copiaTarefa._tarefa._tarefa.prazo)
 
-            else:
-                raise Exception("Tarefa não possui prazo para atualizar")
+            except:
+                raise Exception("Tarefa não possui prazo")
         
 
 class ExcluirTarefaCommand(TarefaCommand):
