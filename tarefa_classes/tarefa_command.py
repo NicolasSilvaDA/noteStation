@@ -15,13 +15,6 @@ class TarefaCommand(ABC):
     def desfazer_operacao(self):
         pass
 
-    def checkTarefaDecorator(self, tarefa: Tarefa) -> Tarefa:
-        if not isinstance(tarefa, TarefaDecorator):
-            return tarefa
-        
-        chTarefa = tarefa._tarefa
-        return self.checkTarefaDecorator(chTarefa)
-
 
 class CriarTarefaCommand(TarefaCommand):
     def __init__(self, tarefa: Tarefa, organizador: TarefaOrganizador):
@@ -36,7 +29,7 @@ class CriarTarefaCommand(TarefaCommand):
 
 
 class EditarTarefaCommand(TarefaCommand):
-    def __init__(self, tarefa: Tarefa, nTitulo: str, nDescricao: str, nLembrete: Optional[str], nPrazo: Optional[date]):
+    def __init__(self, tarefa: Tarefa, nTitulo: str, nDescricao: str, nLembrete: Optional[str], nPrazo: Optional[date], organizador: TarefaOrganizador):
         # A anotação Optional[date] indica que o tipo de dado pode ser date ou None, a mesma
         # coisa para o Optional[str]
         self.tarefa = tarefa
@@ -45,10 +38,11 @@ class EditarTarefaCommand(TarefaCommand):
         self.nDescricao = nDescricao
         self.nLembrete = nLembrete
         self.nPrazo = nPrazo
+        self.organizador = organizador
 
     def executar(self) -> None:
 
-        tarefa = self.checkTarefaDecorator(self.tarefa)
+        tarefa = self.organizador.checkTarefaDecorator(self.tarefa)
 
         if self.nTitulo:
             tarefa.titulo = self.nTitulo
@@ -72,8 +66,8 @@ class EditarTarefaCommand(TarefaCommand):
 
     def desfazer_operacao(self) -> None:
 
-        tarefa = self.checkTarefaDecorator(self.tarefa)
-        copiaTarefa = self.checkTarefaDecorator(self.copiaTarefa)
+        tarefa = self.organizador.checkTarefaDecorator(self.tarefa)
+        copiaTarefa = self.organizador.checkTarefaDecorator(self.copiaTarefa)
 
         tarefa.titulo = copiaTarefa.titulo
         tarefa.descricao = copiaTarefa.descricao
@@ -126,13 +120,14 @@ class ExcluirTarefaCommand(TarefaCommand):
 
 
 class MarcarConcluidaCommand(TarefaCommand):
-    def __init__(self, tarefa: Tarefa):
+    def __init__(self, tarefa: Tarefa, organizador: TarefaOrganizador):
         self.tarefa = tarefa
+        self.organizador = organizador
 
     def executar(self) -> None:
-        tarefa = self.checkTarefaDecorator(self.tarefa)
+        tarefa = self.organizador.checkTarefaDecorator(self.tarefa)
         tarefa.concluida = True
 
     def desfazer_operacao(self) -> None:
-        tarefa = self.checkTarefaDecorator(self.tarefa)
+        tarefa = self.organizador.checkTarefaDecorator(self.tarefa)
         tarefa.concluida = False

@@ -20,7 +20,7 @@ class TarefaBase(Tarefa):
         return f' Título: {self.titulo}\n\
 Descrição: {self.descricao}\n\
 Status: {status}\n\
-Data de criação: {self.data_criacao}'
+Data de criação: {self.data_criacao}\n'
     
 
 class TarefaDecorator(Tarefa):
@@ -63,6 +63,13 @@ class TarefaOrganizador:
         self.tarefas = []
         self.comandos = []
 
+    def checkTarefaDecorator(self, tarefa):
+        if not isinstance(tarefa, TarefaDecorator):
+            return tarefa
+        
+        chTarefa = tarefa._tarefa
+        return self.checkTarefaDecorator(chTarefa)
+
     def add_tarefa(self, tarefa: Tarefa):
         comando = CriarTarefaCommand(tarefa, self)
         comando.executar()
@@ -74,12 +81,12 @@ class TarefaOrganizador:
         self.comandos.append(comando)
 
     def edit_tarefa(self, tarefa: Tarefa):
-        comando = EditarTarefaCommand(tarefa)
+        comando = EditarTarefaCommand(tarefa,organizador=self)
         comando.executar()
         self.comandos.append(comando)
 
     def mark_tarefa(self, tarefa: Tarefa):
-        comando = MarcarConcluidaCommand(tarefa)
+        comando = MarcarConcluidaCommand(tarefa, organizador=self)
         comando.executar()
         self.comandos.append(comando)
 
