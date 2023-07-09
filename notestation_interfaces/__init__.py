@@ -1,3 +1,3 @@
-from notestation_interfaces.tela_inicial_notestation import (
+from notestation_interfaces.interface_notestation import (
     TelaInicial
 )

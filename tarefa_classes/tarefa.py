@@ -14,10 +14,11 @@ class TarefaBase(Tarefa):
         self.descricao = descricao
         self.data_criacao = datetime.now().strftime("%d/%m/%Y %H:%M")
         self.concluida = False
+        self._tarefa = None
 
     def exibir(self) -> str:
         status = "Concluída" if self.concluida else "Pendente"
-        return f' Título: {self.titulo}\n\
+        return f'Título: {self.titulo}\n\
 Descrição: {self.descricao}\n\
 Status: {status}\n\
 Data de criação: {self.data_criacao}\n'
@@ -39,7 +40,7 @@ class TarefaComLembrete(TarefaDecorator):
 
     def exibir(self) -> str:
         tarefa_lembrete = f'Lembrete: {self.lembrete}'
-        return self._tarefa.exibir() + '\n' + tarefa_lembrete
+        return self._tarefa.exibir() + tarefa_lembrete
     
     def alterar_lembrete(self, nLembrete) -> None:
         self.lembrete = nLembrete
@@ -63,7 +64,15 @@ class TarefaOrganizador:
         self.tarefas = []
         self.comandos = []
 
-    def checkTarefaDecorator(self, tarefa):
+    def get_tarefa(self, titulo: str):
+        for tarefa in self.tarefas:
+            tarefa_cpy = self.checkTarefaDecorator(tarefa)
+            if tarefa_cpy.titulo == titulo:
+                return tarefa
+        
+        return None
+
+    def checkTarefaDecorator(self, tarefa: Tarefa):
         if not isinstance(tarefa, TarefaDecorator):
             return tarefa
         
@@ -80,8 +89,8 @@ class TarefaOrganizador:
         comando.executar()
         self.comandos.append(comando)
 
-    def edit_tarefa(self, tarefa: Tarefa):
-        comando = EditarTarefaCommand(tarefa,organizador=self)
+    def edit_tarefa(self, tarefa: Tarefa, nTitulo: str, nDescricao: str, nLembrete: str, nPrazo: str):
+        comando = EditarTarefaCommand(tarefa, nTitulo, nDescricao, nLembrete, nPrazo, organizador=self)
         comando.executar()
         self.comandos.append(comando)
 
