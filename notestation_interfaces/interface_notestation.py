@@ -2,16 +2,42 @@ import dearpygui.dearpygui as dpg
 
 import sys
 import os
+import json
 
 diretorio_pai = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 sys.path.append(diretorio_pai)
 
 from tarefa_classes import *
+from gerenciamento_arquivos import *
 
 
 class TelaInicial:
-    def __init__(self, organizador):
+    def __init__(self, organizador, dir):
         self.organizador = organizador
+        self.dir = dir
+
+        if os.path.exists(dir):
+            with open(dir, "r", encoding='UTF-8') as arquivo:
+                lista_tarefas = json.load(arquivo)
+
+                for tarefa_obj in lista_tarefas:
+                    tarefa = TarefaBase(tarefa_obj['titulo'], tarefa_obj['descricao'])
+                    tarefa.data_criacao = tarefa_obj['data_criacao']
+                    tarefa.data_exata = tarefa_obj['data_exata']
+                    tarefa.concluida = tarefa_obj['concluida']
+                    tarefa._tarefa = tarefa_obj['_tarefa']
+
+                    if tarefa_obj['lembrete']:
+                        tarefa = TarefaComLembrete(tarefa, tarefa_obj['lembrete'])
+                    
+                    if tarefa_obj['prazo']:
+                        tarefa = TarefaComPrazo(tarefa, tarefa_obj['prazo'])
+                    
+                    self.organizador.add_tarefa(tarefa)
+        else:
+            with open(dir, "w", encoding='UTF-8') as arquivo:
+                arquivo.write("")
+
 
     def exibir(self):
         self.titulos = [self.organizador.checkTarefaDecorator(tarefa).titulo for tarefa in self.organizador.tarefas]
@@ -117,6 +143,13 @@ class TelaInicial:
     def atualizar_lista(self):
         self.titulos = [self.organizador.checkTarefaDecorator(tarefa).titulo for tarefa in self.organizador.tarefas]
         dpg.configure_item(self.listbox, items=self.titulos)
+
+        with open(self.dir, "w", encoding='UTF-8') as arquivo:
+            for tarefa in self.organizador.tarefas:
+                json.dumps(
+                    tarefa,
+                    cls=TarefaEncoder
+                )
         
     def exibir_lembrete(self):
         check = dpg.get_value("tarefa_lembrete_check")
