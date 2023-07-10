@@ -12,18 +12,19 @@ class TarefaEncoder(json.JSONEncoder):
     def default(self, obj):
         organizador = TarefaOrganizador()
         obj_base = organizador.checkTarefaDecorator(obj)
-
-        # Verificar gerenciamento para decoradores
-        check_lembrete = hasattr(obj, "lembrete") or hasattr(obj._tarefa, "lembrete")
-        check_prazo = hasattr(obj, "prazo") or hasattr(obj._tarefa, "prazo")
+        
         lembrete = ""
         prazo = ""
 
-        if check_lembrete:
-            lembrete = obj.lembrete if obj.lembrete else obj._tarefa.lembrete
+        if hasattr(obj, "lembrete"):
+            lembrete = obj.lembrete
+        elif hasattr(obj._tarefa, "lembrete"):
+            lembrete = obj._tarefa.lembrete
         
-        if check_prazo:
-            prazo = obj.prazo if obj.prazo else obj._tarefa.prazo
+        if hasattr(obj, "prazo"):
+            prazo = obj.prazo
+        elif hasattr(obj._tarefa, "prazo"):
+            prazo = obj._tarefa.prazo
 
         return {
             "titulo": obj_base.titulo,

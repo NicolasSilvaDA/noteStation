@@ -38,7 +38,6 @@ class TelaInicial:
             with open(dir, "w", encoding='UTF-8') as arquivo:
                 arquivo.write("")
 
-
     def exibir(self):
         self.titulos = [self.organizador.checkTarefaDecorator(tarefa).titulo for tarefa in self.organizador.tarefas]
 
@@ -146,9 +145,16 @@ class TelaInicial:
 
         with open(self.dir, "w", encoding='UTF-8') as arquivo:
             for tarefa in self.organizador.tarefas:
-                json.dumps(
+                tarefa_json = json.dumps(
                     tarefa,
-                    cls=TarefaEncoder
+                    cls=TarefaEncoder,
+                    indent=6
+                )
+
+                json.dump(
+                    tarefa_json,
+                    arquivo,
+                    ensure_ascii=False
                 )
         
     def exibir_lembrete(self):
