@@ -13,6 +13,7 @@ class TarefaBase(Tarefa):
         self.titulo = titulo
         self.descricao = descricao
         self.data_criacao = datetime.now().strftime("%d/%m/%Y %H:%M")
+        self.data_exata = datetime.now().strftime("%d/%m/%Y %H:%M:%S.%f")
         self.concluida = False
         self._tarefa = None
 
@@ -99,18 +100,15 @@ class TarefaOrganizador:
         comando.executar()
         self.comandos.append(comando)
 
+    def sort_tarefas(self, filtro: str):
+        comando = OrdenarListaTarefasCommand(organizador=self, filtro=filtro)
+        comando.executar()
+        self.comandos.append(comando)
+
     def desfazer(self):
         ultimo_comando = self.comandos.pop()
         ultimo_comando.desfazer_operacao()
 
-    def sort_tarefas(self, por_tipo: bool = False, por_data: bool = False, por_prazo: bool = False):
-        if por_tipo:
-            self.tarefas.sort(key=lambda x: type(x).__name__)
-
-        elif por_data:
-            self.tarefas.sort(key=lambda x: x.data_criacao)
-
-        elif por_prazo:
-            self.tarefas.sort(key=lambda x: x.prazo)
+        
 
 from tarefa_classes.tarefa_command import *

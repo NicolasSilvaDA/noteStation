@@ -1,4 +1,5 @@
 import dearpygui.dearpygui as dpg
+from datetime import datetime
 
 from tarefa_classes import *
 from notestation_interfaces import *
@@ -74,13 +75,34 @@ from notestation_interfaces import *
 # criar_tar_com.desfazer_operacao()
 # print(org.tarefas)
 
+tarefa = TarefaBase("Comprar frutas", "abubléf")
+tarefa2 = TarefaBase("Alimentar cachorro", "abublés")
+tarefa3 = TarefaBase("Fazer compras", "abubléw")
+tarefa4 = TarefaBase("Beber água", "abubléee")
+
 organizador = TarefaOrganizador()
-tela_inicial = TelaInicial(organizador)
-tela_inicial.exibir()
-dpg.create_context()
-dpg.show_viewport()
 
-while dpg.is_dearpygui_running():
-    dpg.render_dearpygui_frame()
+organizador.add_tarefa(tarefa)
+organizador.add_tarefa(tarefa2)
+organizador.add_tarefa(tarefa3)
+organizador.add_tarefa(tarefa4)
 
-dpg.destroy_context()
+print(organizador.tarefas)
+
+print(organizador.tarefas.sort(key=lambda x: organizador.checkTarefaDecorator(x).titulo))
+
+print(organizador.tarefas)
+
+print(organizador.tarefas.sort(key=lambda x:  datetime.strptime(organizador.checkTarefaDecorator(x).data_criacao, "%d/%m/%Y %H:%M")))
+
+print(organizador.tarefas)
+
+# tela_inicial = TelaInicial(organizador)
+# tela_inicial.exibir()
+# dpg.create_context()
+# dpg.show_viewport()
+
+# while dpg.is_dearpygui_running():
+#     dpg.render_dearpygui_frame()
+
+# dpg.destroy_context()

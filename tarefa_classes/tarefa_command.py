@@ -1,9 +1,9 @@
 from abc import ABC, abstractmethod
 from typing import Optional
-from datetime import date
-from copy import deepcopy
+from datetime import date, datetime
+import copy
 
-from tarefa_classes.tarefa import Tarefa, TarefaOrganizador, TarefaComLembrete, TarefaComPrazo, TarefaDecorator
+from tarefa_classes.tarefa import Tarefa, TarefaOrganizador, TarefaComLembrete, TarefaComPrazo
 
 class TarefaCommand(ABC):
 
@@ -33,7 +33,7 @@ class EditarTarefaCommand(TarefaCommand):
         # A anotação Optional[date] indica que o tipo de dado pode ser date ou None, a mesma
         # coisa para o Optional[str]
         self.tarefa = tarefa
-        self.copiaTarefa = deepcopy(tarefa)
+        self.copiaTarefa = copy.deepcopy(tarefa)
         self.nTitulo = nTitulo
         self.nDescricao = nDescricao
         self.nLembrete = nLembrete
@@ -131,3 +131,20 @@ class MarcarConcluidaCommand(TarefaCommand):
     def desfazer_operacao(self) -> None:
         tarefa = self.organizador.checkTarefaDecorator(self.tarefa)
         tarefa.concluida = False
+
+class OrdenarListaTarefasCommand(TarefaCommand):
+    def __init__(self, organizador: TarefaOrganizador, filtro: str):
+        self.listaTarefasCopia = copy.copy(organizador.tarefas)
+        self.organizador = organizador
+        self.filtro = filtro
+
+    def executar(self) -> None:
+        if self.filtro == "Data de criação":
+            self.organizador.tarefas.sort(key=lambda x: datetime.strptime(self.organizador.checkTarefaDecorator(x).data_exata, ("%d/%m/%Y %H:%M:%S.%f")))
+
+        if self.filtro == "Título":
+            self.organizador.tarefas.sort(key=lambda x: str.lower(self.organizador.checkTarefaDecorator(x).titulo))
+    
+    def desfazer_operacao(self) -> None:
+        self.organizador.tarefas = [tarefa for tarefa in self.listaTarefasCopia]
+        

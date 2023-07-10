@@ -1,6 +1,5 @@
 import dearpygui.dearpygui as dpg
 
-from datetime import datetime, date
 import sys
 import os
 
@@ -15,17 +14,17 @@ class TelaInicial:
         self.organizador = organizador
 
     def exibir(self):
-        self.titulos = [organizador.checkTarefaDecorator(tarefa).titulo for tarefa in self.organizador.tarefas]
+        self.titulos = [self.organizador.checkTarefaDecorator(tarefa).titulo for tarefa in self.organizador.tarefas]
 
 
         dpg.create_context()
-        dpg.create_viewport(title="noteStation", max_width=500, max_height=390, min_width=500, min_height=390)
+        dpg.create_viewport(title="noteStation", max_width=700, max_height=400, min_width=700, min_height=400)
         dpg.setup_dearpygui()
 
-        with dpg.window(label="noteStation" , width=600, height=500, no_title_bar=True, no_resize=True, no_move=True, tag="PrimWindow"):
+        with dpg.window(label="noteStation" , width=700, height=400, no_title_bar=True, no_resize=True, no_move=True, tag="PrimWindow"):
             # Listbox para exibir as tarefas
             with dpg.group():
-                self.listbox = dpg.add_listbox(label="Tarefas", items=self.titulos, num_items=16)
+                self.listbox = dpg.add_listbox(label="Tarefas", items=self.titulos, num_items=16, width=500)
 
                 with dpg.popup(dpg.last_item(), max_size=(150, 15)):
                     dpg.add_button(label="Editar tarefa", width=135, callback=self.editar_tarefa_window, drag_callback=self.listbox)
@@ -42,8 +41,12 @@ class TelaInicial:
 
                     dpg.add_button(label="Desfazer", callback=self.desfazer_operacao)
 
-                    # Botão de edição
-                    # Botão para ordenar por título, prazo ou data de criação
+                    dpg.add_button(label="Ordenar", tag="OrdenarButton")
+
+                    with dpg.popup(parent="OrdenarButton", mousebutton=dpg.mvMouseButton_Left, tag="OrdenarPopUp", min_size=(130, 60)):
+                        dpg.add_button(label="Título", callback=self.ordenar_lista, width=120)
+
+                        dpg.add_button(label="Data de criação", callback=self.ordenar_lista, width=120)
 
         dpg.show_viewport()
         dpg.set_primary_window("PrimWindow", True)
@@ -126,8 +129,6 @@ class TelaInicial:
     def checar_tarefa(self, titulo):
         for tar_titulo in self.titulos:
             if tar_titulo == titulo:
-                with dpg.popup(parent="adicionar_button", modal=True):
-                    dpg.add_text("Atividade já consta na lista de tarefas")
                     return False
 
         return True
@@ -193,19 +194,9 @@ class TelaInicial:
         self.organizador.desfazer()
         self.atualizar_lista()
 
+    def ordenar_lista(self, Sender):
+        filtro = dpg.get_item_configuration(Sender)['label']
+        
+        self.organizador.sort_tarefas(filtro)
 
-tarefa = TarefaBase("Comprar frutas", "abubléf")
-tarefa2 = TarefaBase("Alimentar cachorro", "abublés")
-tarefa3 = TarefaBase("Fazer compras", "abubléw")
-tarefa4 = TarefaBase("Beber água", "abubléee")
-
-organizador = TarefaOrganizador()
-
-organizador.add_tarefa(tarefa)
-organizador.add_tarefa(tarefa2)
-organizador.add_tarefa(tarefa3)
-organizador.add_tarefa(tarefa4)
-
-
-tela_inicial = TelaInicial(organizador)
-tela_inicial.exibir()
+        self.atualizar_lista()
