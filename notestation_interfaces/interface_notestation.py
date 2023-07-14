@@ -16,11 +16,16 @@ class TelaInicial:
         self.organizador = organizador
         self.dir = dir
 
-        if os.path.exists(dir):
-            with open(dir, "r", encoding='UTF-8') as arquivo:
+        self.carregar_arquivo()
+
+    def carregar_arquivo(self):
+        if os.path.exists(self.dir):
+            with open(self.dir, "r", encoding='UTF-8') as arquivo:
                 lista_tarefas = json.load(arquivo)
 
-                for tarefa_obj in lista_tarefas:
+                for tarefa_id in lista_tarefas:
+                    tarefa_obj = lista_tarefas[tarefa_id]
+                    print(tarefa_obj)
                     tarefa = TarefaBase(tarefa_obj['titulo'], tarefa_obj['descricao'])
                     tarefa.data_criacao = tarefa_obj['data_criacao']
                     tarefa.data_exata = tarefa_obj['data_exata']
@@ -35,7 +40,7 @@ class TelaInicial:
                     
                     self.organizador.add_tarefa(tarefa)
         else:
-            with open(dir, "w", encoding='UTF-8') as arquivo:
+            with open(self.dir, "w", encoding='UTF-8') as arquivo:
                 arquivo.write("")
 
     def exibir(self):
@@ -143,19 +148,26 @@ class TelaInicial:
         self.titulos = [self.organizador.checkTarefaDecorator(tarefa).titulo for tarefa in self.organizador.tarefas]
         dpg.configure_item(self.listbox, items=self.titulos)
 
+        tarefas_to_json = {}
+        count = 0
+
         with open(self.dir, "w", encoding='UTF-8') as arquivo:
             for tarefa in self.organizador.tarefas:
                 tarefa_json = json.dumps(
                     tarefa,
-                    cls=TarefaEncoder,
-                    indent=6
+                    cls=TarefaEncoder
                 )
+                
+                tarefa_json = json.loads(tarefa_json)
 
-                json.dump(
-                    tarefa_json,
-                    arquivo,
-                    ensure_ascii=False
-                )
+                tarefas_to_json[count] = tarefa_json
+                count += 1
+
+            json.dump(
+                tarefas_to_json,
+                arquivo,
+                ensure_ascii=False
+            )
         
     def exibir_lembrete(self):
         check = dpg.get_value("tarefa_lembrete_check")
