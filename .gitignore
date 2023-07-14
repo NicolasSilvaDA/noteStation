@@ -17,3 +17,8 @@ venv
 __pycache__/
 *.py[cod]
 *$py.class
+
+# Arquivos gerais
+.gitignore
+.gitpod.yml
+teste.py
