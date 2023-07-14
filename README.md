@@ -1,5 +1,5 @@
 # NoteStation
-Projeto de aplicação de gerenciamento de tarefas desenvolvido em Python, utilizando a API DearPyGUI para implementar a interface.
+Projeto de aplicação de gerenciamento de tarefas desenvolvido em Python, utilizando DearPyGUI para implementar a interface.
 
 <h2>Objetivo</h2>
 <p>Este projeto tem como objetivo o desenvolvimento de uma aplicação utilizando padrões de projeto e, para isto
