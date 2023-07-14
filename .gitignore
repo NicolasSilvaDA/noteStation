@@ -1,0 +1,23 @@
+#Python venv
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+env
+venv
+
+#PyInstaller
+*.manifest
+*.spec
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Arquivos gerais
+.gitpod.yml
+teste.py
