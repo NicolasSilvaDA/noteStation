@@ -14,11 +14,11 @@ Projeto de aplicação de gerenciamento de tarefas desenvolvido em Python, utili
    <tbody>
      <tr>
        <td>Factory Method</td>
-       <td>Criação de diferentes tipos de tarefas(pessoais, trabalho, recorrentes, etc.)</td>
+       <td>Criação de diferentes tipos de tarefas(trabalho, com prioridade, etc.)</td>
      </tr>
      <tr>
        <td>Decorator</td>
-       <td>Adição de funcionalidades extras às tarefas(prioridade, lembretes, etc.)</td>
+       <td>Adição de funcionalidades extras às tarefas(prazo, lembrete, etc.)</td>
      </tr>
      <tr>
        <td>Command</td>
