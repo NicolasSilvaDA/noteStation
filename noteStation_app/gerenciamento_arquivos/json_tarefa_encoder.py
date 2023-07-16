@@ -15,6 +15,10 @@ class TarefaEncoder(json.JSONEncoder):
         
         lembrete = ""
         prazo = ""
+        prioridade = False
+
+        if obj_base.__class__.__name__ == "TarefaComPrioridade":
+            prioridade = True
 
         if hasattr(obj, "lembrete"):
             lembrete = obj.lembrete
@@ -27,6 +31,7 @@ class TarefaEncoder(json.JSONEncoder):
             prazo = obj._tarefa.prazo
 
         return {
+            "prioridade": prioridade,
             "titulo": obj_base.titulo,
             "descricao": obj_base.descricao,
             "data_criacao": obj_base.data_criacao,

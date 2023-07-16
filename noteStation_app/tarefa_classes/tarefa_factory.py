@@ -20,10 +20,10 @@ class TarefaComPrioridade(TarefaBase):
 
 
 class TarefaTrabalhoFactory(TarefaFactory):
-    def criar_tarefa(titulo, descricao) -> Tarefa:
+    def criar_tarefa(self, titulo: str, descricao: str) -> Tarefa:
         return TarefaTrabalho(titulo, descricao)
     
 
 class TarefaComPrioridadeFactory(TarefaFactory):
-    def criar_tarefa(titulo: str, descricao: str) -> Tarefa:
+    def criar_tarefa(self, titulo: str, descricao: str) -> Tarefa:
         return TarefaComPrioridade(titulo, descricao)

@@ -12,8 +12,10 @@ from gerenciamento_arquivos import *
 
 
 class TelaInicial:
-    def __init__(self, organizador, dir):
-        self.organizador = organizador
+    def __init__(self, dir):
+        self.organizador = TarefaOrganizador()
+        self.tPrioridade = TarefaComPrioridadeFactory()
+        self.tTrabalho = TarefaTrabalhoFactory()
         self.dir = dir
 
         self.carregar_arquivo()
@@ -22,11 +24,18 @@ class TelaInicial:
         if os.path.exists(self.dir):
             with open(self.dir, "r", encoding='UTF-8') as arquivo:
                 lista_tarefas = json.load(arquivo)
+                json_to_tarefas = []
 
                 for tarefa_id in lista_tarefas:
                     tarefa_obj = lista_tarefas[tarefa_id]
                     print(tarefa_obj)
-                    tarefa = TarefaBase(tarefa_obj['titulo'], tarefa_obj['descricao'])
+
+                    tarefa = None
+                    if tarefa_obj['prioridade'] == True:
+                        tarefa = self.tPrioridade.criar_tarefa(tarefa_obj['titulo'], tarefa_obj['descricao'])
+                    else:
+                        tarefa = self.tTrabalho.criar_tarefa(tarefa_obj['titulo'], tarefa_obj['descricao'])
+                    
                     tarefa.data_criacao = tarefa_obj['data_criacao']
                     tarefa.data_exata = tarefa_obj['data_exata']
                     tarefa.concluida = tarefa_obj['concluida']
@@ -38,7 +47,9 @@ class TelaInicial:
                     if tarefa_obj['prazo']:
                         tarefa = TarefaComPrazo(tarefa, tarefa_obj['prazo'])
                     
-                    self.organizador.add_tarefa(tarefa)
+                    json_to_tarefas.append(tarefa)
+                
+                self.organizador.tarefas = json_to_tarefas
         else:
             with open(self.dir, "w", encoding='UTF-8') as arquivo:
                 arquivo.write("")
@@ -77,6 +88,8 @@ class TelaInicial:
                         dpg.add_button(label="Título", callback=self.ordenar_lista, width=120)
 
                         dpg.add_button(label="Data de criação", callback=self.ordenar_lista, width=120)
+
+                        dpg.add_button(label="Tipo de tarefa", callback=self.ordenar_lista, width=120)
 
         dpg.show_viewport()
         dpg.set_primary_window("PrimWindow", True)
@@ -188,6 +201,8 @@ class TelaInicial:
         pop_up_criar = dpg.popup(parent="openPopUp", modal=True, tag="popUpCriar", mousebutton=dpg.mvMouseButton_Left)
 
         with pop_up_criar:
+            dpg.add_checkbox(label="Prioridade?", tag="tarefa_prioridade_check")
+
             dpg.add_input_text(label="Título", tag="tarefa_titulo")
             dpg.add_input_text(label="Descrição", tag="tarefa_descricao")
 
@@ -206,8 +221,15 @@ class TelaInicial:
         
         check_titulo = self.checar_tarefa(titulo)
 
-        if check_titulo: 
-            tarefa = TarefaTrabalhoFactory.criar_tarefa(titulo, descricao)
+        if check_titulo:
+            tarefa = None
+
+            if dpg.get_value("tarefa_prioridade_check") == True:
+                tarefa = self.tPrioridade.criar_tarefa(titulo, descricao)
+            else:
+                tarefa = self.tTrabalho.criar_tarefa(titulo, descricao)
+
+            print(tarefa.__class__.__name__)
 
             lembrete_check = dpg.get_value("tarefa_lembrete_check")
             prazo_check = dpg.get_value("tarefa_prazo_check")

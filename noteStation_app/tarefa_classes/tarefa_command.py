@@ -142,6 +142,9 @@ class OrdenarListaTarefasCommand(TarefaCommand):
         if self.filtro == "Data de criação":
             self.organizador.tarefas.sort(key=lambda x: datetime.strptime(self.organizador.checkTarefaDecorator(x).data_exata, ("%d/%m/%Y %H:%M:%S.%f")))
 
+        if self.filtro == "Tipo de tarefa":
+            self.organizador.tarefas.sort(key=lambda x:self.organizador.checkTarefaDecorator(x).__class__.__name__)
+
         if self.filtro == "Título":
             self.organizador.tarefas.sort(key=lambda x: str.lower(self.organizador.checkTarefaDecorator(x).titulo))
     
