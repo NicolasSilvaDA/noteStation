@@ -1,3 +1,44 @@
+"""
+Módulo para a classe TelaInicial e funcionalidades relacionadas
+
+Este módulo contém a classe TelaInicial, responsável por exibir a interface gráfica principal do programa utilizando a biblioteca dearpygui. Também inclui funcionalidades para carregar tarefas a partir de um arquivo JSON, criar, editar, marcar como concluída e excluir tarefas, além de realizar ordenações na lista de tarefas exibida na interface gráfica.
+
+Classes:
+- TelaInicial: Classe que representa a tela inicial do programa e gerencia as tarefas e a interação com o usuário.
+
+Módulos importados:
+- dearpygui.dearpygui: Módulo da biblioteca dearpygui que é utilizada para criar a interface gráfica.
+- sys: Módulo padrão do Python que fornece acesso a algumas variáveis usadas ou mantidas pelo interpretador e a funções que interagem fortemente com o interpretador.
+- os: Módulo padrão do Python que fornece uma maneira de usar funcionalidades dependentes do sistema operacional.
+- json: Módulo padrão do Python que fornece funções para trabalhar com dados JSON.
+
+- tarefa_classes: Módulo contendo as classes TarefaBase, TarefaComLembrete, TarefaComPrazo, TarefaOrganizador e suas fábricas.
+- gerenciamento_arquivos: Módulo contendo o Encoder personalizado TarefaEncoder para serialização das tarefas em formato JSON.
+
+Atributos:
+- organizador: Uma instância da classe TarefaOrganizador que gerencia as tarefas do programa.
+- tPrioridade: Uma instância da classe TarefaComPrioridadeFactory que é utilizada para criar tarefas com prioridade.
+- tTrabalho: Uma instância da classe TarefaTrabalhoFactory que é utilizada para criar tarefas de trabalho.
+- dir: Uma string representando o diretório do arquivo JSON usado para armazenar as tarefas.
+
+Métodos:
+- carregar_arquivo(): Carrega as tarefas a partir do arquivo JSON especificado no atributo "dir" e as adiciona ao organizador.
+- exibir(): Exibe a interface gráfica principal do programa, mostrando a lista de tarefas e opções para interagir com elas.
+- visualizar_tarefa(Sender): Exibe os detalhes de uma tarefa em uma janela popup quando o usuário clica em "Visualizar tarefa".
+- editar_tarefa_window(Sender): Abre uma janela popup para editar os atributos de uma tarefa quando o usuário clica em "Editar tarefa".
+- editar_tarefa(Sender): Atualiza os atributos de uma tarefa após o usuário realizar as alterações na janela de edição.
+- marcar_concluida(Sender): Marca uma tarefa como concluída e exibe uma mensagem em uma janela popup.
+- atualizar_lista(): Atualiza a lista de tarefas exibida na interface gráfica após modificações (adicionar, editar, excluir tarefas).
+- exibir_lembrete(): Exibe ou oculta o campo de lembrete dependendo do valor do checkbox "Lembrete".
+- exibir_prazo(): Exibe ou oculta o campo de prazo dependendo do valor do checkbox "Prazo".
+- checar_tarefa(titulo): Verifica se o título da tarefa já existe na lista de títulos de tarefas exibida na interface gráfica.
+- criar_tarefa_popup(): Abre uma janela popup para criar uma nova tarefa quando o usuário clica em "Adicionar tarefa".
+- criar_tarefa(): Cria uma nova tarefa com os atributos especificados pelo usuário na janela de criação e a adiciona ao organizador.
+- excluir_tarefa(Sender): Exclui uma tarefa selecionada na lista quando o usuário clica em "Excluir tarefa".
+- desfazer_operacao(): Desfaz a última operação realizada pelo usuário (adicionar, editar ou excluir tarefa).
+- ordenar_lista(Sender): Ordena a lista de tarefas exibida na interface gráfica de acordo com o filtro especificado (título, data de criação ou tipo de tarefa).
+"""
+
 import dearpygui.dearpygui as dpg
 
 import sys
