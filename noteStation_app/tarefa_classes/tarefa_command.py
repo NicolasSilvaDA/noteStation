@@ -2,47 +2,47 @@
 Módulo contendo classes relacionadas a comandos para manipulação de tarefas e seus estados.
 
 Classes:
-- TarefaCommand: Classe abstrata que define a estrutura de um comando para manipular tarefas, com os métodos abstratos "executar()" e "desfazer_operacao()".
-- CriarTarefaCommand: Classe concreta que implementa um comando para criar uma nova tarefa.
-- EditarTarefaCommand: Classe concreta que implementa um comando para editar uma tarefa existente.
-- ExcluirTarefaCommand: Classe concreta que implementa um comando para excluir uma tarefa.
-- MarcarConcluidaCommand: Classe concreta que implementa um comando para marcar uma tarefa como concluída.
-- OrdenarListaTarefasCommand: Classe concreta que implementa um comando para ordenar a lista de tarefas.
+    - TarefaCommand: Classe abstrata que define a estrutura de um comando para manipular tarefas, com os métodos abstratos "executar()" e "desfazer_operacao()".
+    - CriarTarefaCommand: Classe concreta que implementa um comando para criar uma nova tarefa.
+    - EditarTarefaCommand: Classe concreta que implementa um comando para editar uma tarefa existente.
+    - ExcluirTarefaCommand: Classe concreta que implementa um comando para excluir uma tarefa.
+    - MarcarConcluidaCommand: Classe concreta que implementa um comando para marcar uma tarefa como concluída.
+    - OrdenarListaTarefasCommand: Classe concreta que implementa um comando para ordenar a lista de tarefas.
 
 Módulos importados:
-- ABC: Módulo do pacote "abc" que fornece as classes e funções para trabalhar com metaprogramação orientada a aspectos.
-- abstractmethod: Decorador para um método abstrato, que deve ser implementado nas classes derivadas.
-- Optional: Tipo de dado para indicar que um parâmetro pode ser do tipo especificado ou None.
-- date: Tipo de dado que representa uma data.
-- datetime: Tipo de dado que representa uma data e hora.
-- copy: Módulo que fornece funções para criar cópias de objetos.
+    - ABC: Módulo do pacote "abc" que fornece as classes e funções para trabalhar com metaprogramação orientada a aspectos.
+    - abstractmethod: Decorador para um método abstrato, que deve ser implementado nas classes derivadas.
+    - Optional: Tipo de dado para indicar que um parâmetro pode ser do tipo especificado ou None.
+    - date: Tipo de dado que representa uma data.
+    - datetime: Tipo de dado que representa uma data e hora.
+    - copy: Módulo que fornece funções para criar cópias de objetos.
 
 Atributos:
-- Nenhum atributo relevante é definido nas classes.
+    - Nenhum atributo relevante é definido nas classes.
 
 Métodos:
-- TarefaCommand.executar(): Método abstrato que executa o comando em uma tarefa.
-- TarefaCommand.desfazer_operacao(): Método abstrato que desfaz a operação realizada pelo comando.
+    - TarefaCommand.executar(): Método abstrato que executa o comando em uma tarefa.
+    - TarefaCommand.desfazer_operacao(): Método abstrato que desfaz a operação realizada pelo comando.
 
-- CriarTarefaCommand.__init__(tarefa, organizador): Método construtor da classe CriarTarefaCommand, que recebe uma tarefa a ser criada e o organizador de tarefas.
-- CriarTarefaCommand.executar(): Método que executa o comando de criação de tarefa.
-- CriarTarefaCommand.desfazer_operacao(): Método que desfaz a operação de criação de tarefa.
+    - CriarTarefaCommand.__init__(tarefa, organizador): Método construtor da classe CriarTarefaCommand, que recebe uma tarefa a ser criada e o organizador de tarefas.
+    - CriarTarefaCommand.executar(): Método que executa o comando de criação de tarefa.
+    - CriarTarefaCommand.desfazer_operacao(): Método que desfaz a operação de criação de tarefa.
 
-- EditarTarefaCommand.__init__(tarefa, nTitulo, nDescricao, nLembrete, nPrazo, organizador): Método construtor da classe EditarTarefaCommand, que recebe os dados para editar uma tarefa, a tarefa original e o organizador de tarefas.
-- EditarTarefaCommand.executar(): Método que executa o comando de edição de tarefa.
-- EditarTarefaCommand.desfazer_operacao(): Método que desfaz a operação de edição de tarefa.
+    - EditarTarefaCommand.__init__(tarefa, nTitulo, nDescricao, nLembrete, nPrazo, organizador): Método construtor da classe EditarTarefaCommand, que recebe os dados para editar uma tarefa, a tarefa original e o organizador de tarefas.
+    - EditarTarefaCommand.executar(): Método que executa o comando de edição de tarefa.
+    - EditarTarefaCommand.desfazer_operacao(): Método que desfaz a operação de edição de tarefa.
 
-- ExcluirTarefaCommand.__init__(tarefa, organizador): Método construtor da classe ExcluirTarefaCommand, que recebe a tarefa a ser excluída e o organizador de tarefas.
-- ExcluirTarefaCommand.executar(): Método que executa o comando de exclusão de tarefa.
-- ExcluirTarefaCommand.desfazer_operacao(): Método que desfaz a operação de exclusão de tarefa.
+    - ExcluirTarefaCommand.__init__(tarefa, organizador): Método construtor da classe ExcluirTarefaCommand, que recebe a tarefa a ser excluída e o organizador de tarefas.
+    - ExcluirTarefaCommand.executar(): Método que executa o comando de exclusão de tarefa.
+    - ExcluirTarefaCommand.desfazer_operacao(): Método que desfaz a operação de exclusão de tarefa.
 
-- MarcarConcluidaCommand.__init__(tarefa, organizador): Método construtor da classe MarcarConcluidaCommand, que recebe a tarefa a ser marcada como concluída e o organizador de tarefas.
-- MarcarConcluidaCommand.executar(): Método que executa o comando de marcação de tarefa como concluída.
-- MarcarConcluidaCommand.desfazer_operacao(): Método que desfaz a operação de marcação de tarefa como concluída.
+    - MarcarConcluidaCommand.__init__(tarefa, organizador): Método construtor da classe MarcarConcluidaCommand, que recebe a tarefa a ser marcada como concluída e o organizador de tarefas.
+    - MarcarConcluidaCommand.executar(): Método que executa o comando de marcação de tarefa como concluída.
+    - MarcarConcluidaCommand.desfazer_operacao(): Método que desfaz a operação de marcação de tarefa como concluída.
 
-- OrdenarListaTarefasCommand.__init__(organizador, filtro): Método construtor da classe OrdenarListaTarefasCommand, que recebe o organizador de tarefas e o filtro de ordenação.
-- OrdenarListaTarefasCommand.executar(): Método que executa o comando de ordenação da lista de tarefas.
-- OrdenarListaTarefasCommand.desfazer_operacao(): Método que desfaz a operação de ordenação da lista de tarefas.
+    - OrdenarListaTarefasCommand.__init__(organizador, filtro): Método construtor da classe OrdenarListaTarefasCommand, que recebe o organizador de tarefas e o filtro de ordenação.
+    - OrdenarListaTarefasCommand.executar(): Método que executa o comando de ordenação da lista de tarefas.
+    - OrdenarListaTarefasCommand.desfazer_operacao(): Método que desfaz a operação de ordenação da lista de tarefas.
 """
 
 from abc import ABC, abstractmethod

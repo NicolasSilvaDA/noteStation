@@ -2,46 +2,43 @@
 Módulo contendo as classes relacionadas à criação, edição e organização de tarefas.
 
 Classes:
-- Tarefa: Classe abstrata que define a estrutura de uma tarefa com o método abstrato "exibir()".
-- TarefaBase: Classe concreta que representa uma tarefa básica com título, descrição, data de criação, data exata, status e um atributo protegido _tarefa.
-- TarefaDecorator: Classe abstrata que serve como base para as classes que decoram as tarefas com funcionalidades adicionais.
-- TarefaComLembrete: Classe concreta que adiciona uma funcionalidade de lembrete a uma tarefa existente.
-- TarefaComPrazo: Classe concreta que adiciona uma funcionalidade de prazo a uma tarefa existente.
-- TarefaOrganizador: Classe que gerencia as tarefas, oferecendo métodos para adicionar, excluir, editar, marcar como concluída e ordenar a lista de tarefas.
+    - Tarefa: Classe abstrata que define a estrutura de uma tarefa com o método abstrato "exibir()".
+    - TarefaBase: Classe concreta que representa uma tarefa básica com título, descrição, data de criação, data exata, status e um atributo protegido _tarefa.
+    - TarefaDecorator: Classe abstrata que serve como base para as classes que decoram as tarefas com funcionalidades adicionais.
+    - TarefaComLembrete: Classe concreta que adiciona uma funcionalidade de lembrete a uma tarefa existente.
+    - TarefaComPrazo: Classe concreta que adiciona uma funcionalidade de prazo a uma tarefa existente.
+    - TarefaOrganizador: Classe que gerencia as tarefas, oferecendo métodos para adicionar, excluir, editar, marcar como concluída e ordenar a lista de tarefas.
 
 Módulos importados:
-- ABC: Módulo do pacote "abc" que fornece as classes e funções para trabalhar com metaprogramação orientada a aspectos.
-- abstractmethod: Decorador para um método abstrato, que deve ser implementado nas classes derivadas.
-- datetime: Módulo padrão do Python que fornece classes para manipulação de datas e horas.
-- date: Classe do módulo datetime que representa uma data (ano, mês e dia).
+    - ABC: Módulo do pacote "abc" que fornece as classes e funções para trabalhar com metaprogramação orientada a aspectos.
+    - abstractmethod: Decorador para um método abstrato, que deve ser implementado nas classes derivadas.
+    - datetime: Módulo padrão do Python que fornece classes para manipulação de datas e horas.
+    - date: Classe do módulo datetime que representa uma data (ano, mês e dia).
 
 Atributos:
-- TarefaBase.titulo: String representando o título da tarefa.
-- TarefaBase.descricao: String representando a descrição da tarefa.
-- TarefaBase.data_criacao: String representando a data de criação da tarefa no formato "dia/mês/ano hora:minuto".
-- TarefaBase.data_exata: String representando a data exata da tarefa no formato "dia/mês/ano hora:minuto:segundo.microsegundo".
-- TarefaBase.concluida: Booleano indicando se a tarefa está concluída (True) ou pendente (False).
-- TarefaBase._tarefa: Atributo protegido que permite o acesso à tarefa original em caso de uso de decorators.
+    - TarefaBase.titulo: String representando o título da tarefa.
+    - TarefaBase.descricao: String representando a descrição da tarefa.
+    - TarefaBase.data_criacao: String representando a data de criação da tarefa no formato "dia/mês/ano hora:minuto".
+    - TarefaBase.data_exata: String representando a data exata da tarefa no formato "dia/mês/ano hora:minuto:segundo.microsegundo".
+    - TarefaBase.concluida: Booleano indicando se a tarefa está concluída (True) ou pendente (False).
+    - TarefaBase._tarefa: Atributo protegido que permite o acesso à tarefa original em caso de uso de decorators.
 
 Métodos:
-- TarefaBase.exibir(): Método concreto que retorna uma string formatada com as informações da tarefa.
-
-- TarefaComLembrete.lembrete: String representando o lembrete da tarefa.
-- TarefaComLembrete.alterar_lembrete(nLembrete): Método para atualizar o lembrete da tarefa com um novo valor.
-
-- TarefaComPrazo.prazo: Objeto date representando o prazo da tarefa.
-- TarefaComPrazo.atualizar_prazo(nPrazo): Método para atualizar o prazo da tarefa com um novo valor.
-
-- TarefaOrganizador.tarefas: Lista de tarefas gerenciadas pelo organizador.
-- TarefaOrganizador.comandos: Lista de comandos executados pelo organizador (para desfazer operações).
-- TarefaOrganizador.get_tarefa(titulo): Retorna a tarefa com o título especificado ou None se não encontrada.
-- TarefaOrganizador.checkTarefaDecorator(tarefa): Verifica se a tarefa é um decorator e retorna a tarefa base.
-- TarefaOrganizador.add_tarefa(tarefa): Adiciona uma nova tarefa ao organizador.
-- TarefaOrganizador.del_tarefa(tarefa): Exclui uma tarefa do organizador.
-- TarefaOrganizador.edit_tarefa(tarefa, nTitulo, nDescricao, nLembrete, nPrazo): Edita os atributos de uma tarefa existente.
-- TarefaOrganizador.mark_tarefa(tarefa): Marca uma tarefa como concluída.
-- TarefaOrganizador.sort_tarefas(filtro): Ordena a lista de tarefas exibida na interface gráfica de acordo com o filtro especificado.
-- TarefaOrganizador.desfazer(): Desfaz a última operação realizada pelo usuário (adicionar, editar ou excluir tarefa).
+    - TarefaBase.exibir(): Método concreto que retorna uma string formatada com as informações da tarefa.
+    - TarefaComLembrete.lembrete: String representando o lembrete da tarefa.
+    - TarefaComLembrete.alterar_lembrete(nLembrete): Método para atualizar o lembrete da tarefa com um novo valor.
+    - TarefaComPrazo.prazo: Objeto date representando o prazo da tarefa.
+    - TarefaComPrazo.atualizar_prazo(nPrazo): Método para atualizar o prazo da tarefa com um novo valor.
+    - TarefaOrganizador.tarefas: Lista de tarefas gerenciadas pelo organizador.
+    - TarefaOrganizador.comandos: Lista de comandos executados pelo organizador (para desfazer operações).
+    - TarefaOrganizador.get_tarefa(titulo): Retorna a tarefa com o título especificado ou None se não encontrada.
+    - TarefaOrganizador.checkTarefaDecorator(tarefa): Verifica se a tarefa é um decorator e retorna a tarefa base.
+    - TarefaOrganizador.add_tarefa(tarefa): Adiciona uma nova tarefa ao organizador.
+    - TarefaOrganizador.del_tarefa(tarefa): Exclui uma tarefa do organizador.
+    - TarefaOrganizador.edit_tarefa(tarefa, nTitulo, nDescricao, nLembrete, nPrazo): Edita os atributos de uma tarefa existente.
+    - TarefaOrganizador.mark_tarefa(tarefa): Marca uma tarefa como concluída.
+    - TarefaOrganizador.sort_tarefas(filtro): Ordena a lista de tarefas exibida na interface gráfica de acordo com o filtro especificado.
+    - TarefaOrganizador.desfazer(): Desfaz a última operação realizada pelo usuário (adicionar, editar ou excluir tarefa).
 """
 
 from abc import ABC, abstractmethod
