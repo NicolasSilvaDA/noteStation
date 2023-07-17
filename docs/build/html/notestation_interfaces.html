@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt-BR" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pacote de interface gráfica &mdash; documentação noteStation 1.0</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Buscar" href="search.html" />
+    <link rel="next" title="Pacote de gerenciamento de JSON" href="gerenciamento_arquivos.html" />
+    <link rel="prev" title="Pacote de gerenciamento de objetos" href="tarefa_classes.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            noteStation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Pesquisar documentos" aria-label="Pesquisar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Menu de navegação">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="main.html">Módulo para inicialização de aplicativo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tarefa_classes.html">Pacote de gerenciamento de objetos</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Pacote de interface gráfica</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#arquivo-init">Arquivo __init__</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-notestation_interfaces.interface_notestation">Interface Gráfica(GUI)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#notestation_interfaces.interface_notestation.TelaInicial"><code class="docutils literal notranslate"><span class="pre">TelaInicial</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#notestation_interfaces.interface_notestation.TelaInicial.atualizar_lista"><code class="docutils literal notranslate"><span class="pre">TelaInicial.atualizar_lista()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#notestation_interfaces.interface_notestation.TelaInicial.carregar_arquivo"><code class="docutils literal notranslate"><span class="pre">TelaInicial.carregar_arquivo()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#notestation_interfaces.interface_notestation.TelaInicial.checar_tarefa"><code class="docutils literal notranslate"><span class="pre">TelaInicial.checar_tarefa()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#notestation_interfaces.interface_notestation.TelaInicial.criar_tarefa"><code class="docutils literal notranslate"><span class="pre">TelaInicial.criar_tarefa()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#notestation_interfaces.interface_notestation.TelaInicial.criar_tarefa_popup"><code class="docutils literal notranslate"><span class="pre">TelaInicial.criar_tarefa_popup()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#notestation_interfaces.interface_notestation.TelaInicial.desfazer_operacao"><code class="docutils literal notranslate"><span class="pre">TelaInicial.desfazer_operacao()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#notestation_interfaces.interface_notestation.TelaInicial.editar_tarefa"><code class="docutils literal notranslate"><span class="pre">TelaInicial.editar_tarefa()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#notestation_interfaces.interface_notestation.TelaInicial.editar_tarefa_window"><code class="docutils literal notranslate"><span class="pre">TelaInicial.editar_tarefa_window()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#notestation_interfaces.interface_notestation.TelaInicial.excluir_tarefa"><code class="docutils literal notranslate"><span class="pre">TelaInicial.excluir_tarefa()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#notestation_interfaces.interface_notestation.TelaInicial.exibir"><code class="docutils literal notranslate"><span class="pre">TelaInicial.exibir()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#notestation_interfaces.interface_notestation.TelaInicial.exibir_lembrete"><code class="docutils literal notranslate"><span class="pre">TelaInicial.exibir_lembrete()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#notestation_interfaces.interface_notestation.TelaInicial.exibir_prazo"><code class="docutils literal notranslate"><span class="pre">TelaInicial.exibir_prazo()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#notestation_interfaces.interface_notestation.TelaInicial.marcar_concluida"><code class="docutils literal notranslate"><span class="pre">TelaInicial.marcar_concluida()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#notestation_interfaces.interface_notestation.TelaInicial.ordenar_lista"><code class="docutils literal notranslate"><span class="pre">TelaInicial.ordenar_lista()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#notestation_interfaces.interface_notestation.TelaInicial.visualizar_tarefa"><code class="docutils literal notranslate"><span class="pre">TelaInicial.visualizar_tarefa()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#conteudo-do-pacote">Conteúdo do pacote</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gerenciamento_arquivos.html">Pacote de gerenciamento de JSON</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Menu de navegação móvel" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">noteStation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Navegação da página">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Pacote de interface gráfica</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/notestation_interfaces.rst.txt" rel="nofollow"> Ver código-fonte da página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="pacote-de-interface-grafica">
+<h1>Pacote de interface gráfica<a class="headerlink" href="#pacote-de-interface-grafica" title="Link permanente para este cabeçalho"></a></h1>
+<section id="arquivo-init">
+<h2>Arquivo __init__<a class="headerlink" href="#arquivo-init" title="Link permanente para este cabeçalho"></a></h2>
+</section>
+<section id="module-notestation_interfaces.interface_notestation">
+<span id="interface-grafica-gui"></span><h2>Interface Gráfica(GUI)<a class="headerlink" href="#module-notestation_interfaces.interface_notestation" title="Link permanente para este cabeçalho"></a></h2>
+<p>Módulo para a classe TelaInicial e funcionalidades relacionadas</p>
+<p>Este módulo contém a classe TelaInicial, responsável por exibir a interface gráfica principal do programa utilizando a biblioteca dearpygui. Também inclui funcionalidades para carregar tarefas a partir de um arquivo JSON, criar, editar, marcar como concluída e excluir tarefas, além de realizar ordenações na lista de tarefas exibida na interface gráfica.</p>
+<dl class="simple">
+<dt>Classes:</dt><dd><ul class="simple">
+<li><p>TelaInicial: Classe que representa a tela inicial do programa e gerencia as tarefas e a interação com o usuário.</p></li>
+</ul>
+</dd>
+<dt>Módulos importados:</dt><dd><ul class="simple">
+<li><p>dearpygui.dearpygui: Módulo da biblioteca dearpygui que é utilizada para criar a interface gráfica.</p></li>
+<li><p>sys: Módulo padrão do Python que fornece acesso a algumas variáveis usadas ou mantidas pelo interpretador e a funções que interagem fortemente com o interpretador.</p></li>
+<li><p>os: Módulo padrão do Python que fornece uma maneira de usar funcionalidades dependentes do sistema operacional.</p></li>
+<li><p>json: Módulo padrão do Python que fornece funções para trabalhar com dados JSON.</p></li>
+<li><p>tarefa_classes: Módulo contendo as classes TarefaBase, TarefaComLembrete, TarefaComPrazo, TarefaOrganizador e suas fábricas.</p></li>
+<li><p>gerenciamento_arquivos: Módulo contendo o Encoder personalizado TarefaEncoder para serialização das tarefas em formato JSON.</p></li>
+</ul>
+</dd>
+<dt>Atributos:</dt><dd><ul class="simple">
+<li><p>organizador: Uma instância da classe TarefaOrganizador que gerencia as tarefas do programa.</p></li>
+<li><p>tPrioridade: Uma instância da classe TarefaComPrioridadeFactory que é utilizada para criar tarefas com prioridade.</p></li>
+<li><p>tTrabalho: Uma instância da classe TarefaTrabalhoFactory que é utilizada para criar tarefas de trabalho.</p></li>
+<li><p>dir: Uma string representando o diretório do arquivo JSON usado para armazenar as tarefas.</p></li>
+</ul>
+</dd>
+<dt>Métodos:</dt><dd><ul class="simple">
+<li><p>carregar_arquivo(): Carrega as tarefas a partir do arquivo JSON especificado no atributo “dir” e as adiciona ao organizador.</p></li>
+<li><p>exibir(): Exibe a interface gráfica principal do programa, mostrando a lista de tarefas e opções para interagir com elas.</p></li>
+<li><p>visualizar_tarefa(Sender): Exibe os detalhes de uma tarefa em uma janela popup quando o usuário clica em “Visualizar tarefa”.</p></li>
+<li><p>editar_tarefa_window(Sender): Abre uma janela popup para editar os atributos de uma tarefa quando o usuário clica em “Editar tarefa”.</p></li>
+<li><p>editar_tarefa(Sender): Atualiza os atributos de uma tarefa após o usuário realizar as alterações na janela de edição.</p></li>
+<li><p>marcar_concluida(Sender): Marca uma tarefa como concluída e exibe uma mensagem em uma janela popup.</p></li>
+<li><p>atualizar_lista(): Atualiza a lista de tarefas exibida na interface gráfica após modificações (adicionar, editar, excluir tarefas).</p></li>
+<li><p>exibir_lembrete(): Exibe ou oculta o campo de lembrete dependendo do valor do checkbox “Lembrete”.</p></li>
+<li><p>exibir_prazo(): Exibe ou oculta o campo de prazo dependendo do valor do checkbox “Prazo”.</p></li>
+<li><p>checar_tarefa(titulo): Verifica se o título da tarefa já existe na lista de títulos de tarefas exibida na interface gráfica.</p></li>
+<li><p>criar_tarefa_popup(): Abre uma janela popup para criar uma nova tarefa quando o usuário clica em “Adicionar tarefa”.</p></li>
+<li><p>criar_tarefa(): Cria uma nova tarefa com os atributos especificados pelo usuário na janela de criação e a adiciona ao organizador.</p></li>
+<li><p>excluir_tarefa(Sender): Exclui uma tarefa selecionada na lista quando o usuário clica em “Excluir tarefa”.</p></li>
+<li><p>desfazer_operacao(): Desfaz a última operação realizada pelo usuário (adicionar, editar ou excluir tarefa).</p></li>
+<li><p>ordenar_lista(Sender): Ordena a lista de tarefas exibida na interface gráfica de acordo com o filtro especificado (título, data de criação ou tipo de tarefa).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="notestation_interfaces.interface_notestation.TelaInicial">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">notestation_interfaces.interface_notestation.</span></span><span class="sig-name descname"><span class="pre">TelaInicial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#notestation_interfaces.interface_notestation.TelaInicial" title="Link permanente para esta definição"></a></dt>
+<dd><p>Base: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="notestation_interfaces.interface_notestation.TelaInicial.atualizar_lista">
+<span class="sig-name descname"><span class="pre">atualizar_lista</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#notestation_interfaces.interface_notestation.TelaInicial.atualizar_lista" title="Link permanente para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="notestation_interfaces.interface_notestation.TelaInicial.carregar_arquivo">
+<span class="sig-name descname"><span class="pre">carregar_arquivo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#notestation_interfaces.interface_notestation.TelaInicial.carregar_arquivo" title="Link permanente para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="notestation_interfaces.interface_notestation.TelaInicial.checar_tarefa">
+<span class="sig-name descname"><span class="pre">checar_tarefa</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">titulo</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#notestation_interfaces.interface_notestation.TelaInicial.checar_tarefa" title="Link permanente para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="notestation_interfaces.interface_notestation.TelaInicial.criar_tarefa">
+<span class="sig-name descname"><span class="pre">criar_tarefa</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#notestation_interfaces.interface_notestation.TelaInicial.criar_tarefa" title="Link permanente para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="notestation_interfaces.interface_notestation.TelaInicial.criar_tarefa_popup">
+<span class="sig-name descname"><span class="pre">criar_tarefa_popup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#notestation_interfaces.interface_notestation.TelaInicial.criar_tarefa_popup" title="Link permanente para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="notestation_interfaces.interface_notestation.TelaInicial.desfazer_operacao">
+<span class="sig-name descname"><span class="pre">desfazer_operacao</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#notestation_interfaces.interface_notestation.TelaInicial.desfazer_operacao" title="Link permanente para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="notestation_interfaces.interface_notestation.TelaInicial.editar_tarefa">
+<span class="sig-name descname"><span class="pre">editar_tarefa</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Sender</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#notestation_interfaces.interface_notestation.TelaInicial.editar_tarefa" title="Link permanente para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="notestation_interfaces.interface_notestation.TelaInicial.editar_tarefa_window">
+<span class="sig-name descname"><span class="pre">editar_tarefa_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Sender</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#notestation_interfaces.interface_notestation.TelaInicial.editar_tarefa_window" title="Link permanente para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="notestation_interfaces.interface_notestation.TelaInicial.excluir_tarefa">
+<span class="sig-name descname"><span class="pre">excluir_tarefa</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Sender</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#notestation_interfaces.interface_notestation.TelaInicial.excluir_tarefa" title="Link permanente para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="notestation_interfaces.interface_notestation.TelaInicial.exibir">
+<span class="sig-name descname"><span class="pre">exibir</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#notestation_interfaces.interface_notestation.TelaInicial.exibir" title="Link permanente para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="notestation_interfaces.interface_notestation.TelaInicial.exibir_lembrete">
+<span class="sig-name descname"><span class="pre">exibir_lembrete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#notestation_interfaces.interface_notestation.TelaInicial.exibir_lembrete" title="Link permanente para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="notestation_interfaces.interface_notestation.TelaInicial.exibir_prazo">
+<span class="sig-name descname"><span class="pre">exibir_prazo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#notestation_interfaces.interface_notestation.TelaInicial.exibir_prazo" title="Link permanente para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="notestation_interfaces.interface_notestation.TelaInicial.marcar_concluida">
+<span class="sig-name descname"><span class="pre">marcar_concluida</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Sender</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#notestation_interfaces.interface_notestation.TelaInicial.marcar_concluida" title="Link permanente para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="notestation_interfaces.interface_notestation.TelaInicial.ordenar_lista">
+<span class="sig-name descname"><span class="pre">ordenar_lista</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Sender</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#notestation_interfaces.interface_notestation.TelaInicial.ordenar_lista" title="Link permanente para esta definição"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="notestation_interfaces.interface_notestation.TelaInicial.visualizar_tarefa">
+<span class="sig-name descname"><span class="pre">visualizar_tarefa</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Sender</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#notestation_interfaces.interface_notestation.TelaInicial.visualizar_tarefa" title="Link permanente para esta definição"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="conteudo-do-pacote">
+<h2>Conteúdo do pacote<a class="headerlink" href="#conteudo-do-pacote" title="Link permanente para este cabeçalho"></a></h2>
+<span class="target" id="module-notestation_interfaces"></span><p>Módulo contendo a interface principal do aplicativo “NoteStation”.</p>
+<dl class="simple">
+<dt>Classes:</dt><dd><ul class="simple">
+<li><p>TelaInicial: Classe responsável por representar a tela inicial do aplicativo “NoteStation” e interagir com o usuário.</p></li>
+</ul>
+</dd>
+<dt>Módulos importados:</dt><dd><ul class="simple">
+<li><p>TelaInicial: Classe da interface principal do aplicativo “NoteStation” importada do módulo “notestation_interfaces.interface_notestation”.</p></li>
+</ul>
+</dd>
+<dt>Atributos:</dt><dd><ul class="simple">
+<li><p>Nenhum atributo relevante é definido na classe.</p></li>
+</ul>
+</dd>
+<dt>Métodos:</dt><dd><ul class="simple">
+<li><p>TelaInicial.__init__(dir): Método construtor da classe TelaInicial, que recebe o diretório do arquivo de armazenamento de tarefas.</p></li>
+<li><p>TelaInicial.carregar_arquivo(): Método que carrega as tarefas do arquivo de armazenamento.</p></li>
+<li><p>TelaInicial.exibir(): Método que exibe a interface principal do aplicativo.</p></li>
+<li><p>TelaInicial.visualizar_tarefa(Sender): Método que exibe detalhes de uma tarefa específica.</p></li>
+<li><p>TelaInicial.editar_tarefa_window(Sender): Método que exibe a janela de edição de uma tarefa.</p></li>
+<li><p>TelaInicial.editar_tarefa(Sender): Método que edita uma tarefa com base nos dados fornecidos pelo usuário.</p></li>
+<li><p>TelaInicial.marcar_concluida(Sender): Método que marca uma tarefa como concluída.</p></li>
+<li><p>TelaInicial.atualizar_lista(): Método que atualiza a lista de tarefas exibida na interface e salva as alterações no arquivo de armazenamento.</p></li>
+<li><p>TelaInicial.exibir_lembrete(): Método que exibe o campo de lembrete ao criar ou editar uma tarefa.</p></li>
+<li><p>TelaInicial.exibir_prazo(): Método que exibe o campo de prazo ao criar ou editar uma tarefa.</p></li>
+<li><p>TelaInicial.checar_tarefa(titulo): Método que verifica se uma tarefa com um determinado título já existe.</p></li>
+<li><p>TelaInicial.criar_tarefa_popup(): Método que exibe a janela para criar uma nova tarefa.</p></li>
+<li><p>TelaInicial.criar_tarefa(): Método que cria uma nova tarefa com base nos dados fornecidos pelo usuário.</p></li>
+<li><p>TelaInicial.excluir_tarefa(Sender): Método que exclui uma tarefa da lista.</p></li>
+<li><p>TelaInicial.desfazer_operacao(): Método que desfaz a última operação realizada.</p></li>
+<li><p>TelaInicial.ordenar_lista(Sender): Método que ordena a lista de tarefas com base no filtro selecionado pelo usuário.</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Rodapé">
+        <a href="tarefa_classes.html" class="btn btn-neutral float-left" title="Pacote de gerenciamento de objetos" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="gerenciamento_arquivos.html" class="btn btn-neutral float-right" title="Pacote de gerenciamento de JSON" accesskey="n" rel="next">Próximo <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Nicolas Araújo.</p>
+  </div>
+
+  Compilado com <a href="https://www.sphinx-doc.org/">Sphinx</a> usando um
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    fornecido por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+Pacote de interface gráfica
+===============================
+
+Arquivo \_\_init\_\_
+----------
+
+Interface Gráfica(GUI)
+-----------------------------------------------------
+
+.. automodule:: notestation_interfaces.interface_notestation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Conteúdo do pacote
+---------------
+
+.. automodule:: notestation_interfaces
+   :members:
+   :undoc-members:
+   :show-inheritance:

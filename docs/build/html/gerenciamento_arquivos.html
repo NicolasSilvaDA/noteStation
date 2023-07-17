@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt-BR" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pacote de gerenciamento de JSON &mdash; documentação noteStation 1.0</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Buscar" href="search.html" />
+    <link rel="prev" title="Pacote de interface gráfica" href="notestation_interfaces.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            noteStation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Pesquisar documentos" aria-label="Pesquisar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Menu de navegação">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="main.html">Módulo para inicialização de aplicativo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tarefa_classes.html">Pacote de gerenciamento de objetos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notestation_interfaces.html">Pacote de interface gráfica</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Pacote de gerenciamento de JSON</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#arquivo-init">Arquivo __init__</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-gerenciamento_arquivos.json_tarefa_encoder">Módulo para codificação de objeto para JSON</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#gerenciamento_arquivos.json_tarefa_encoder.TarefaEncoder"><code class="docutils literal notranslate"><span class="pre">TarefaEncoder</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#gerenciamento_arquivos.json_tarefa_encoder.TarefaEncoder.default"><code class="docutils literal notranslate"><span class="pre">TarefaEncoder.default()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#conteudo-do-pacote">Conteúdo do pacote</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Menu de navegação móvel" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">noteStation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Navegação da página">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Pacote de gerenciamento de JSON</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/gerenciamento_arquivos.rst.txt" rel="nofollow"> Ver código-fonte da página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="pacote-de-gerenciamento-de-json">
+<h1>Pacote de gerenciamento de JSON<a class="headerlink" href="#pacote-de-gerenciamento-de-json" title="Link permanente para este cabeçalho"></a></h1>
+<section id="arquivo-init">
+<h2>Arquivo __init__<a class="headerlink" href="#arquivo-init" title="Link permanente para este cabeçalho"></a></h2>
+</section>
+<section id="module-gerenciamento_arquivos.json_tarefa_encoder">
+<span id="modulo-para-codificacao-de-objeto-para-json"></span><h2>Módulo para codificação de objeto para JSON<a class="headerlink" href="#module-gerenciamento_arquivos.json_tarefa_encoder" title="Link permanente para este cabeçalho"></a></h2>
+<p>Módulo contendo uma classe de codificação personalizada para tarefas e importações de módulos.</p>
+<dl class="simple">
+<dt>Módulos importados:</dt><dd><ul class="simple">
+<li><p>sys: Módulo do sistema Python.</p></li>
+<li><p>os: Módulo que fornece uma maneira de usar funcionalidades dependentes do sistema operacional.</p></li>
+<li><p>json: Módulo que permite trabalhar com dados JSON (JavaScript Object Notation).</p></li>
+</ul>
+</dd>
+<dt>Atributos:</dt><dd><ul class="simple">
+<li><p>Nenhum atributo relevante é definido na classe.</p></li>
+</ul>
+</dd>
+<dt>Métodos:</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt>TarefaEncoder.default(obj): Método que converte um objeto em uma representação serializável em JSON.</dt><dd><ul>
+<li><p>obj: O objeto a ser codificado em JSON.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt>Detalhes dos atributos e métodos:</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt>TarefaEncoder.default(obj): Método sobrescrito da classe JSONEncoder que é chamado para objetos não serializáveis padrão.</dt><dd><ul>
+<li><p>O método verifica o tipo da tarefa passada como argumento e cria um dicionário contendo as informações da tarefa para serem codificadas em JSON.</p></li>
+<li><p>A prioridade da tarefa é verificada e definida como True caso seja uma TarefaComPrioridade, caso contrário, é definida como False.</p></li>
+<li><p>As informações de título, descrição, data de criação, data exata, conclusão, tarefa base (_tarefa), lembrete e prazo são armazenadas no dicionário.</p></li>
+<li><p>O dicionário é retornado como a representação serializável da tarefa em formato JSON.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="gerenciamento_arquivos.json_tarefa_encoder.TarefaEncoder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gerenciamento_arquivos.json_tarefa_encoder.</span></span><span class="sig-name descname"><span class="pre">TarefaEncoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skipkeys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ensure_ascii</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_circular</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_nan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separators</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gerenciamento_arquivos.json_tarefa_encoder.TarefaEncoder" title="Link permanente para esta definição"></a></dt>
+<dd><p>Base: <code class="xref py py-class docutils literal notranslate"><span class="pre">JSONEncoder</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="gerenciamento_arquivos.json_tarefa_encoder.TarefaEncoder.default">
+<span class="sig-name descname"><span class="pre">default</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gerenciamento_arquivos.json_tarefa_encoder.TarefaEncoder.default" title="Link permanente para esta definição"></a></dt>
+<dd><p>Implement this method in a subclass such that it returns
+a serializable object for <code class="docutils literal notranslate"><span class="pre">o</span></code>, or calls the base implementation
+(to raise a <code class="docutils literal notranslate"><span class="pre">TypeError</span></code>).</p>
+<p>For example, to support arbitrary iterators, you could
+implement default like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">iterable</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">iterable</span><span class="p">)</span>
+    <span class="c1"># Let the base class default method raise the TypeError</span>
+    <span class="k">return</span> <span class="n">JSONEncoder</span><span class="o">.</span><span class="n">default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="conteudo-do-pacote">
+<h2>Conteúdo do pacote<a class="headerlink" href="#conteudo-do-pacote" title="Link permanente para este cabeçalho"></a></h2>
+<span class="target" id="module-gerenciamento_arquivos"></span><p>Módulo contendo a classe TarefaEncoder para codificação personalizada de tarefas em formato JSON.</p>
+<dl class="simple">
+<dt>Módulos importados:</dt><dd><ul class="simple">
+<li><p>Nenhum módulo é importado.</p></li>
+</ul>
+</dd>
+<dt>Classe:</dt><dd><ul class="simple">
+<li><p>TarefaEncoder: Classe que herda de json.JSONEncoder e fornece a funcionalidade de codificação personalizada para tarefas em formato JSON.</p></li>
+</ul>
+</dd>
+<dt>Métodos:</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt>TarefaEncoder.default(obj): Método que converte um objeto em uma representação serializável em JSON.</dt><dd><ul>
+<li><p>obj: O objeto a ser codificado em JSON.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt>Detalhes dos atributos e métodos:</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt>TarefaEncoder.default(obj): Método sobrescrito da classe JSONEncoder que é chamado para objetos não serializáveis padrão.</dt><dd><ul>
+<li><p>O método verifica o tipo da tarefa passada como argumento e cria um dicionário contendo as informações da tarefa para serem codificadas em JSON.</p></li>
+<li><p>A prioridade da tarefa é verificada e definida como True caso seja uma TarefaComPrioridade, caso contrário, é definida como False.</p></li>
+<li><p>As informações de título, descrição, data de criação, data exata, conclusão, tarefa base (_tarefa), lembrete e prazo são armazenadas no dicionário.</p></li>
+<li><p>O dicionário é retornado como a representação serializável da tarefa em formato JSON.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Rodapé">
+        <a href="notestation_interfaces.html" class="btn btn-neutral float-left" title="Pacote de interface gráfica" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Nicolas Araújo.</p>
+  </div>
+
+  Compilado com <a href="https://www.sphinx-doc.org/">Sphinx</a> usando um
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    fornecido por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

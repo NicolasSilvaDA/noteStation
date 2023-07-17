@@ -1,0 +1,7 @@
+Módulo para inicialização de aplicativo
+===========
+
+.. automodule:: main
+   :members:
+   :undoc-members:
+   :show-inheritance:

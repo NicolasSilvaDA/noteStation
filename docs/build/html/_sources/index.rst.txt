@@ -1,0 +1,31 @@
+.. noteStation documentation master file, created by
+   sphinx-quickstart on Mon Jul 17 14:55:53 2023.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Documentação do aplicativo noteStation
+=======================================
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   main
+
+   tarefa_classes
+   tarefa_classes.tarefa
+   tarefa_classes.tarefa_command
+   tarefa_classes.tarefa_factory
+
+   notestation_interfaces
+   notestation_interfaces.interface_notestation
+
+   gerenciamento_arquivos
+   gerenciamento_arquivos.json_tarefa_encoder
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

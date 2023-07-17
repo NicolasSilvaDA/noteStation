@@ -1,0 +1,37 @@
+Pacote de gerenciamento de objetos
+=======================
+
+Arquivo \_\_init\_\_
+----------
+
+Módulo tarefa.py
+-----------------------------
+
+.. automodule:: tarefa_classes.tarefa
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Módulo tarefa_command.py
+--------------------------------------
+
+.. automodule:: tarefa_classes.tarefa_command
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Módulo tarefa_factory.py
+--------------------------------------
+
+.. automodule:: tarefa_classes.tarefa_factory
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Conteúdo do pacote
+---------------
+
+.. automodule:: tarefa_classes
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,21 @@
+Pacote de gerenciamento de JSON
+===============================
+
+Arquivo \_\_init\_\_
+----------
+
+Módulo para codificação de objeto para JSON
+----------------------------------------------------
+
+.. automodule:: gerenciamento_arquivos.json_tarefa_encoder
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Conteúdo do pacote
+---------------
+
+.. automodule:: gerenciamento_arquivos
+   :members:
+   :undoc-members:
+   :show-inheritance:
