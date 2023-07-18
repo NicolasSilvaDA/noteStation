@@ -16,33 +16,6 @@ Módulos importados:
     - date: Tipo de dado que representa uma data.
     - datetime: Tipo de dado que representa uma data e hora.
     - copy: Módulo que fornece funções para criar cópias de objetos.
-
-Atributos:
-    - Nenhum atributo relevante é definido nas classes.
-
-Métodos:
-    - TarefaCommand.executar(): Método abstrato que executa o comando em uma tarefa.
-    - TarefaCommand.desfazer_operacao(): Método abstrato que desfaz a operação realizada pelo comando.
-
-    - CriarTarefaCommand.__init__(tarefa, organizador): Método construtor da classe CriarTarefaCommand, que recebe uma tarefa a ser criada e o organizador de tarefas.
-    - CriarTarefaCommand.executar(): Método que executa o comando de criação de tarefa.
-    - CriarTarefaCommand.desfazer_operacao(): Método que desfaz a operação de criação de tarefa.
-
-    - EditarTarefaCommand.__init__(tarefa, nTitulo, nDescricao, nLembrete, nPrazo, organizador): Método construtor da classe EditarTarefaCommand, que recebe os dados para editar uma tarefa, a tarefa original e o organizador de tarefas.
-    - EditarTarefaCommand.executar(): Método que executa o comando de edição de tarefa.
-    - EditarTarefaCommand.desfazer_operacao(): Método que desfaz a operação de edição de tarefa.
-
-    - ExcluirTarefaCommand.__init__(tarefa, organizador): Método construtor da classe ExcluirTarefaCommand, que recebe a tarefa a ser excluída e o organizador de tarefas.
-    - ExcluirTarefaCommand.executar(): Método que executa o comando de exclusão de tarefa.
-    - ExcluirTarefaCommand.desfazer_operacao(): Método que desfaz a operação de exclusão de tarefa.
-
-    - MarcarConcluidaCommand.__init__(tarefa, organizador): Método construtor da classe MarcarConcluidaCommand, que recebe a tarefa a ser marcada como concluída e o organizador de tarefas.
-    - MarcarConcluidaCommand.executar(): Método que executa o comando de marcação de tarefa como concluída.
-    - MarcarConcluidaCommand.desfazer_operacao(): Método que desfaz a operação de marcação de tarefa como concluída.
-
-    - OrdenarListaTarefasCommand.__init__(organizador, filtro): Método construtor da classe OrdenarListaTarefasCommand, que recebe o organizador de tarefas e o filtro de ordenação.
-    - OrdenarListaTarefasCommand.executar(): Método que executa o comando de ordenação da lista de tarefas.
-    - OrdenarListaTarefasCommand.desfazer_operacao(): Método que desfaz a operação de ordenação da lista de tarefas.
 """
 
 from abc import ABC, abstractmethod
@@ -53,30 +26,86 @@ import copy
 from tarefa_classes.tarefa import Tarefa, TarefaOrganizador, TarefaComLembrete, TarefaComPrazo
 
 class TarefaCommand(ABC):
+    """
+    Classe abstrata que representa um comando relacionado a uma tarefa.
+
+    Atributos:
+        - Nenhum atributo na classe abstrata.
+    """
+
 
     @abstractmethod
     def executar(self):
+        """
+        Método abstrato para executar o comando.
+        """
         pass
 
     @abstractmethod
     def desfazer_operacao(self):
+        """
+        Método abstrato para desfazer a operação realizada pelo comando.
+        """
         pass
 
 
 class CriarTarefaCommand(TarefaCommand):
+    """
+    Classe que representa o comando de criar uma tarefa.
+
+    Atributos:
+        - tarefa (Tarefa): A tarefa a ser criada.
+        - organizador (TarefaOrganizador): O organizador de tarefas onde a tarefa será adicionada.
+    """
     def __init__(self, tarefa: Tarefa, organizador: TarefaOrganizador):
+        """
+        Construtor da classe CriarTarefaCommand.
+
+        Parâmetros:
+            - tarefa (Tarefa): A tarefa a ser criada.
+            - organizador (TarefaOrganizador): O organizador de tarefas onde a tarefa será adicionada.
+        """
         self.tarefa = tarefa
         self.organizador = organizador
 
     def executar(self) -> None:
+        """
+        Executa o comando de criar uma tarefa.
+        """
         self.organizador.tarefas.append(self.tarefa)
     
     def desfazer_operacao(self) -> None:
+        """
+        Desfaz a operação de criação da tarefa.
+        """
         self.organizador.tarefas.remove(self.tarefa)
 
 
 class EditarTarefaCommand(TarefaCommand):
+    """
+    Classe que representa o comando de editar uma tarefa.
+
+    Atributos:
+        - tarefa (Tarefa): A tarefa a ser editada.
+        - copiaTarefa (Tarefa): Uma cópia da tarefa original antes da edição.
+        - nTitulo (str): O novo título da tarefa.
+        - nDescricao (str): A nova descrição da tarefa.
+        - nLembrete (Optional[str]): O novo lembrete da tarefa (pode ser None).
+        - nPrazo (Optional[date]): O novo prazo da tarefa (pode ser None).
+        - organizador (TarefaOrganizador): O organizador de tarefas onde a tarefa será editada.
+    """
     def __init__(self, tarefa: Tarefa, nTitulo: str, nDescricao: str, nLembrete: Optional[str], nPrazo: Optional[date], organizador: TarefaOrganizador):
+        """
+        Construtor da classe EditarTarefaCommand.
+
+        Parâmetros:
+            - tarefa (Tarefa): A tarefa a ser editada.
+            - nTitulo (str): O novo título da tarefa.
+            - nDescricao (str): A nova descrição da tarefa.
+            - nLembrete (Optional[str]): O novo lembrete da tarefa (pode ser None).
+            - nPrazo (Optional[date]): O novo prazo da tarefa (pode ser None).
+            - organizador (TarefaOrganizador): O organizador de tarefas onde a tarefa será editada.
+        """
         # A anotação Optional[date] indica que o tipo de dado pode ser date ou None, a mesma
         # coisa para o Optional[str]
         self.tarefa = tarefa
@@ -88,7 +117,9 @@ class EditarTarefaCommand(TarefaCommand):
         self.organizador = organizador
 
     def executar(self) -> None:
-
+        """
+        Executa o comando de editar a tarefa.
+        """
         tarefa = self.organizador.checkTarefaDecorator(self.tarefa)
 
         if self.nTitulo:
@@ -112,7 +143,9 @@ class EditarTarefaCommand(TarefaCommand):
                 self.tarefa._tarefa.atualizar_prazo(self.nPrazo)
 
     def desfazer_operacao(self) -> None:
-
+        """
+        Desfaz a operação de editar a tarefa, restaurando os valores originais da tarefa.
+        """
         tarefa = self.organizador.checkTarefaDecorator(self.tarefa)
         copiaTarefa = self.organizador.checkTarefaDecorator(self.copiaTarefa)
 
@@ -155,37 +188,95 @@ class EditarTarefaCommand(TarefaCommand):
         
 
 class ExcluirTarefaCommand(TarefaCommand):
+    """
+    Classe que representa o comando de excluir uma tarefa.
+
+    Atributos:
+        - tarefa (Tarefa): A tarefa a ser excluída.
+        - organizador (TarefaOrganizador): O organizador de tarefas onde a tarefa será excluída.
+    """
     def __init__(self, tarefa: Tarefa, organizador: TarefaOrganizador):
+        """
+        Construtor da classe ExcluirTarefaCommand.
+
+        Parâmetros:
+            - tarefa (Tarefa): A tarefa a ser excluída.
+            - organizador (TarefaOrganizador): O organizador de tarefas onde a tarefa será excluída.
+        """
         self.tarefa = tarefa
         self.organizador = organizador
 
     def executar(self) -> None:
+        """
+        Executa o comando de excluir a tarefa.
+        """
         self.organizador.tarefas.remove(self.tarefa)
 
     def desfazer_operacao(self) -> None:
+        """
+        Desfaz a operação de exclusão da tarefa, adicionando a tarefa de volta ao organizador.
+        """
         self.organizador.tarefas.append(self.tarefa)
 
 
 class MarcarConcluidaCommand(TarefaCommand):
+    """
+    Classe que representa o comando de marcar uma tarefa como concluída.
+
+    Atributos:
+        - tarefa (Tarefa): A tarefa a ser marcada como concluída.
+        - organizador (TarefaOrganizador): O organizador de tarefas onde a tarefa será marcada como concluída.
+    """
     def __init__(self, tarefa: Tarefa, organizador: TarefaOrganizador):
+        """
+        Construtor da classe MarcarConcluidaCommand.
+
+        Parâmetros:
+            - tarefa (Tarefa): A tarefa a ser marcada como concluída.
+            - organizador (TarefaOrganizador): O organizador de tarefas onde a tarefa será marcada como concluída.
+        """
         self.tarefa = tarefa
         self.organizador = organizador
 
     def executar(self) -> None:
+        """
+        Executa o comando de marcar a tarefa como concluída.
+        """
         tarefa = self.organizador.checkTarefaDecorator(self.tarefa)
         tarefa.concluida = True
 
     def desfazer_operacao(self) -> None:
+        """
+        Desfaz a operação de marcar a tarefa como concluída, marcando a tarefa como pendente novamente.
+        """
         tarefa = self.organizador.checkTarefaDecorator(self.tarefa)
         tarefa.concluida = False
 
 class OrdenarListaTarefasCommand(TarefaCommand):
+    """
+    Classe que representa o comando de ordenar a lista de tarefas.
+
+    Atributos:
+        - listaTarefasCopia (List[Tarefa]): Uma cópia da lista de tarefas original antes da ordenação.
+        - organizador (TarefaOrganizador): O organizador de tarefas cuja lista será ordenada.
+        - filtro (str): O critério de ordenação (pode ser "Data de criação", "Tipo de tarefa" ou "Título").
+    """
     def __init__(self, organizador: TarefaOrganizador, filtro: str):
+        """
+        Construtor da classe OrdenarListaTarefasCommand.
+
+        Parâmetros:
+            - organizador (TarefaOrganizador): O organizador de tarefas cuja lista será ordenada.
+            - filtro (str): O critério de ordenação (pode ser "Data de criação", "Tipo de tarefa" ou "Título").
+        """
         self.listaTarefasCopia = copy.copy(organizador.tarefas)
         self.organizador = organizador
         self.filtro = filtro
 
     def executar(self) -> None:
+        """
+        Executa o comando de ordenar a lista de tarefas.
+        """
         if self.filtro == "Data de criação":
             self.organizador.tarefas.sort(key=lambda x: datetime.strptime(self.organizador.checkTarefaDecorator(x).data_exata, ("%d/%m/%Y %H:%M:%S.%f")))
 
@@ -196,5 +287,8 @@ class OrdenarListaTarefasCommand(TarefaCommand):
             self.organizador.tarefas.sort(key=lambda x: str.lower(self.organizador.checkTarefaDecorator(x).titulo))
     
     def desfazer_operacao(self) -> None:
+        """
+        Desfaz a operação de ordenar a lista de tarefas, restaurando a lista de tarefas para o estado original.
+        """
         self.organizador.tarefas = [tarefa for tarefa in self.listaTarefasCopia]
         

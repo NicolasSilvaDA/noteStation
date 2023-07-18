@@ -45,7 +45,10 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Menu de navegação">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Módulo para inicialização de aplicativo</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Módulo para inicialização de aplicativo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#modulo-de-inicializacao-da-aplicacao-notestation">Módulo de Inicialização da Aplicação NoteStation</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="tarefa_classes.html">Pacote de gerenciamento de objetos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notestation_interfaces.html">Pacote de interface gráfica</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gerenciamento_arquivos.html">Pacote de gerenciamento de JSON</a></li>
@@ -77,31 +80,65 @@
              
   <section id="modulo-para-inicializacao-de-aplicativo">
 <h1>Módulo para inicialização de aplicativo<a class="headerlink" href="#modulo-para-inicializacao-de-aplicativo" title="Link permanente para este cabeçalho"></a></h1>
-<span class="target" id="module-main"></span><p>Módulo que inicia a aplicação NoteStation.</p>
-<p>Módulos importados:
-- os: Módulo que fornece funções para interagir com o sistema operacional, permitindo a criação de diretórios e manipulação de caminhos de arquivos.</p>
-<p>Classes:
-- Nenhuma classe é definida neste módulo.</p>
-<p>Constantes:
-- PATH_FILE: Caminho completo para o diretório onde será armazenado o arquivo de lista de tarefas JSON.</p>
-<p>Funções:
-- Nenhuma função é definida neste módulo.</p>
-<p>Variáveis:
-- main_app: Instância da classe TelaInicial que inicia a aplicação NoteStation com o diretório do arquivo de lista de tarefas JSON fornecido.</p>
-<p>Detalhes das constantes e variáveis:
-- PATH_FILE: Caminho completo para o diretório onde será armazenado o arquivo de lista de tarefas JSON.</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>O caminho é construído usando o módulo os e o método os.path.expanduser para expandir o caminho inicial usando o diretório do usuário atual.</p></li>
-<li><p>Se o diretório não existir, é criado usando o método os.mkdir.</p></li>
-<li><p>A variável dir recebe o caminho completo para o arquivo de lista de tarefas JSON usando a variável PATH_FILE como base.</p></li>
+<span class="target" id="module-main"></span><section id="modulo-de-inicializacao-da-aplicacao-notestation">
+<h2>Módulo de Inicialização da Aplicação NoteStation<a class="headerlink" href="#modulo-de-inicializacao-da-aplicacao-notestation" title="Link permanente para este cabeçalho"></a></h2>
+<p>Este módulo inicia a aplicação NoteStation.</p>
+<dl>
+<dt>Módulos importados:</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt>os: Módulo que fornece funções para interagir com o sistema operacional,</dt><dd><p>permitindo a criação de diretórios e manipulação de caminhos de arquivos.</p>
+</dd>
+</dl>
+</li>
 </ul>
+</dd>
+<dt>Constantes:</dt><dd><ul class="simple">
+<li><p>PATH_FILE: Caminho completo para o diretório onde será armazenado o arquivo de lista de tarefas JSON.</p></li>
+</ul>
+</dd>
+<dt>Classes:</dt><dd><ul class="simple">
+<li><p>Nenhuma classe é definida neste módulo.</p></li>
+</ul>
+</dd>
+<dt>Funções:</dt><dd><ul class="simple">
+<li><p>Nenhuma função é definida neste módulo.</p></li>
+</ul>
+</dd>
+<dt>Variáveis:</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt>main_app: Instância da classe TelaInicial que inicia a aplicação NoteStation</dt><dd><p>com o diretório do arquivo de lista de tarefas JSON fornecido.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt>Detalhes das constantes e variáveis:</dt><dd><ul>
+<li><p>PATH_FILE: Caminho completo para o diretório onde será armazenado o arquivo de lista de tarefas JSON.
+- O caminho é construído usando o módulo os e o método os.path.expanduser para expandir o caminho</p>
+<blockquote>
+<div><p>inicial usando o diretório do usuário atual.</p>
 </div></blockquote>
 <ul class="simple">
-<li><p>main_app: Instância da classe TelaInicial que inicia a aplicação NoteStation com o diretório do arquivo de lista de tarefas JSON fornecido.
-- É criada uma instância da classe TelaInicial passando o caminho completo para o arquivo de lista de tarefas JSON como argumento.
-- A função exibir() da instância main_app é chamada para iniciar a aplicação e exibir a tela inicial do NoteStation.</p></li>
+<li><p>Se o diretório não existir, é criado usando o método os.mkdir.</p></li>
+<li><p>A variável dir recebe o caminho completo para o arquivo de lista de tarefas JSON usando a
+variável PATH_FILE como base.</p></li>
 </ul>
+</li>
+<li><dl class="simple">
+<dt>main_app: Instância da classe TelaInicial que inicia a aplicação NoteStation com o diretório do</dt><dd><p>arquivo de lista de tarefas JSON fornecido.</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>É criada uma instância da classe TelaInicial passando o caminho completo para o arquivo de lista
+de tarefas JSON como argumento.</p></li>
+<li><p>A função exibir() da instância main_app é chamada para iniciar a aplicação e exibir a tela inicial
+do NoteStation.</p></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
 </section>
 
 

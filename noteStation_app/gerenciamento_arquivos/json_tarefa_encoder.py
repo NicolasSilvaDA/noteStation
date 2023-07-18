@@ -32,7 +32,25 @@ from tarefa_classes import *
 
 
 class TarefaEncoder(json.JSONEncoder):
+    """
+    Classe de codificação personalizada para objetos de tarefa em formato JSON.
+
+    Métodos:
+        default(obj)
+    """
     def default(self, obj):
+        """
+        Método sobrescrito da classe JSONEncoder que converte um objeto em uma representação serializável em JSON.
+
+        Atributos:
+            - obj: O objeto a ser codificado em JSON.
+        
+        Retorna:
+            - Um dicionário contendo as informações da tarefa para serem codificadas em JSON.
+                - A prioridade da tarefa é verificada e definida como True caso seja uma TarefaComPrioridade, caso contrário, é definida como False.
+                - As informações de título, descrição, data de criação, data exata, conclusão, tarefa base (_tarefa), lembrete e prazo são armazenadas no dicionário.
+                - O dicionário é retornado como a representação serializável da tarefa em formato JSON.
+        """
         organizador = TarefaOrganizador()
         obj_base = organizador.checkTarefaDecorator(obj)
         

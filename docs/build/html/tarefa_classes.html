@@ -196,42 +196,29 @@
 <li><p>date: Classe do módulo datetime que representa uma data (ano, mês e dia).</p></li>
 </ul>
 </dd>
-<dt>Atributos:</dt><dd><ul class="simple">
-<li><p>TarefaBase.titulo: String representando o título da tarefa.</p></li>
-<li><p>TarefaBase.descricao: String representando a descrição da tarefa.</p></li>
-<li><p>TarefaBase.data_criacao: String representando a data de criação da tarefa no formato “dia/mês/ano hora:minuto”.</p></li>
-<li><p>TarefaBase.data_exata: String representando a data exata da tarefa no formato “dia/mês/ano hora:minuto:segundo.microsegundo”.</p></li>
-<li><p>TarefaBase.concluida: Booleano indicando se a tarefa está concluída (True) ou pendente (False).</p></li>
-<li><p>TarefaBase._tarefa: Atributo protegido que permite o acesso à tarefa original em caso de uso de decorators.</p></li>
-</ul>
-</dd>
-<dt>Métodos:</dt><dd><ul class="simple">
-<li><p>TarefaBase.exibir(): Método concreto que retorna uma string formatada com as informações da tarefa.</p></li>
-<li><p>TarefaComLembrete.lembrete: String representando o lembrete da tarefa.</p></li>
-<li><p>TarefaComLembrete.alterar_lembrete(nLembrete): Método para atualizar o lembrete da tarefa com um novo valor.</p></li>
-<li><p>TarefaComPrazo.prazo: Objeto date representando o prazo da tarefa.</p></li>
-<li><p>TarefaComPrazo.atualizar_prazo(nPrazo): Método para atualizar o prazo da tarefa com um novo valor.</p></li>
-<li><p>TarefaOrganizador.tarefas: Lista de tarefas gerenciadas pelo organizador.</p></li>
-<li><p>TarefaOrganizador.comandos: Lista de comandos executados pelo organizador (para desfazer operações).</p></li>
-<li><p>TarefaOrganizador.get_tarefa(titulo): Retorna a tarefa com o título especificado ou None se não encontrada.</p></li>
-<li><p>TarefaOrganizador.checkTarefaDecorator(tarefa): Verifica se a tarefa é um decorator e retorna a tarefa base.</p></li>
-<li><p>TarefaOrganizador.add_tarefa(tarefa): Adiciona uma nova tarefa ao organizador.</p></li>
-<li><p>TarefaOrganizador.del_tarefa(tarefa): Exclui uma tarefa do organizador.</p></li>
-<li><p>TarefaOrganizador.edit_tarefa(tarefa, nTitulo, nDescricao, nLembrete, nPrazo): Edita os atributos de uma tarefa existente.</p></li>
-<li><p>TarefaOrganizador.mark_tarefa(tarefa): Marca uma tarefa como concluída.</p></li>
-<li><p>TarefaOrganizador.sort_tarefas(filtro): Ordena a lista de tarefas exibida na interface gráfica de acordo com o filtro especificado.</p></li>
-<li><p>TarefaOrganizador.desfazer(): Desfaz a última operação realizada pelo usuário (adicionar, editar ou excluir tarefa).</p></li>
-</ul>
-</dd>
 </dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="tarefa_classes.tarefa.Tarefa">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tarefa_classes.tarefa.</span></span><span class="sig-name descname"><span class="pre">Tarefa</span></span><a class="headerlink" href="#tarefa_classes.tarefa.Tarefa" title="Link permanente para esta definição"></a></dt>
 <dd><p>Base: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Classe abstrata que representa uma tarefa.</p>
+<dl class="simple">
+<dt>Métodos:</dt><dd><ul class="simple">
+<li><p>exibir() -&gt; str: Retorna uma string com as informações da tarefa.</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="tarefa_classes.tarefa.Tarefa.exibir">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">exibir</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#tarefa_classes.tarefa.Tarefa.exibir" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Método abstrato para exibir informações da tarefa.</p>
+<dl class="simple">
+<dt>Retorna:</dt><dd><ul class="simple">
+<li><p>str: Uma string com as informações da tarefa.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -239,10 +226,29 @@
 <dt class="sig sig-object py" id="tarefa_classes.tarefa.TarefaBase">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tarefa_classes.tarefa.</span></span><span class="sig-name descname"><span class="pre">TarefaBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">titulo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">descricao</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tarefa_classes.tarefa.TarefaBase" title="Link permanente para esta definição"></a></dt>
 <dd><p>Base: <a class="reference internal" href="#tarefa_classes.tarefa.Tarefa" title="tarefa_classes.tarefa.Tarefa"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tarefa</span></code></a></p>
+<p>Classe que representa uma tarefa base.</p>
+<dl class="simple">
+<dt>Atributos:</dt><dd><ul class="simple">
+<li><p>titulo (str): O título da tarefa.</p></li>
+<li><p>descricao (str): A descrição da tarefa.</p></li>
+<li><p>data_criacao (str): Data e hora de criação da tarefa (formato: “dd/mm/aaaa HH:MM”).</p></li>
+<li><p>data_exata (str): Data e hora exata de criação da tarefa (formato: “dd/mm/aaaa HH:MM:SS.ms”).</p></li>
+<li><p>concluida (bool): Indica se a tarefa foi concluída (True) ou não (False).</p></li>
+<li><p>_tarefa (Tarefa): Referência à tarefa base.</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="tarefa_classes.tarefa.TarefaBase.exibir">
 <span class="sig-name descname"><span class="pre">exibir</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#tarefa_classes.tarefa.TarefaBase.exibir" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Método para exibir informações da tarefa.</p>
+<dl class="simple">
+<dt>Retorna:</dt><dd><ul class="simple">
+<li><p>str: Uma string com as informações da tarefa.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -250,15 +256,36 @@
 <dt class="sig sig-object py" id="tarefa_classes.tarefa.TarefaComLembrete">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tarefa_classes.tarefa.</span></span><span class="sig-name descname"><span class="pre">TarefaComLembrete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tarefa</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#tarefa_classes.tarefa.Tarefa" title="tarefa_classes.tarefa.Tarefa"><span class="pre">Tarefa</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">lembrete</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tarefa_classes.tarefa.TarefaComLembrete" title="Link permanente para esta definição"></a></dt>
 <dd><p>Base: <a class="reference internal" href="#tarefa_classes.tarefa.TarefaDecorator" title="tarefa_classes.tarefa.TarefaDecorator"><code class="xref py py-class docutils literal notranslate"><span class="pre">TarefaDecorator</span></code></a></p>
+<p>Classe que representa uma tarefa com lembrete.</p>
+<dl class="simple">
+<dt>Atributos:</dt><dd><ul class="simple">
+<li><p>lembrete (str): O lembrete associado à tarefa.</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="tarefa_classes.tarefa.TarefaComLembrete.alterar_lembrete">
 <span class="sig-name descname"><span class="pre">alterar_lembrete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nLembrete</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#tarefa_classes.tarefa.TarefaComLembrete.alterar_lembrete" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Altera o lembrete associado à tarefa.</p>
+<dl class="simple">
+<dt>Parâmetros:</dt><dd><ul class="simple">
+<li><p>novo_lembrete (str): O novo lembrete a ser associado à tarefa.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="tarefa_classes.tarefa.TarefaComLembrete.exibir">
 <span class="sig-name descname"><span class="pre">exibir</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#tarefa_classes.tarefa.TarefaComLembrete.exibir" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Método para exibir informações da tarefa com lembrete.</p>
+<dl class="simple">
+<dt>Retorna:</dt><dd><ul class="simple">
+<li><p>str: Uma string com as informações da tarefa decorada com lembrete.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -266,15 +293,36 @@
 <dt class="sig sig-object py" id="tarefa_classes.tarefa.TarefaComPrazo">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tarefa_classes.tarefa.</span></span><span class="sig-name descname"><span class="pre">TarefaComPrazo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tarefa</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#tarefa_classes.tarefa.Tarefa" title="tarefa_classes.tarefa.Tarefa"><span class="pre">Tarefa</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">prazo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">date</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tarefa_classes.tarefa.TarefaComPrazo" title="Link permanente para esta definição"></a></dt>
 <dd><p>Base: <a class="reference internal" href="#tarefa_classes.tarefa.TarefaDecorator" title="tarefa_classes.tarefa.TarefaDecorator"><code class="xref py py-class docutils literal notranslate"><span class="pre">TarefaDecorator</span></code></a></p>
+<p>Classe que representa uma tarefa com prazo.</p>
+<dl class="simple">
+<dt>Atributos:</dt><dd><ul class="simple">
+<li><p>prazo (date): O prazo associado à tarefa.</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="tarefa_classes.tarefa.TarefaComPrazo.atualizar_prazo">
 <span class="sig-name descname"><span class="pre">atualizar_prazo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nPrazo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">date</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tarefa_classes.tarefa.TarefaComPrazo.atualizar_prazo" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Atualiza o prazo associado à tarefa.</p>
+<dl class="simple">
+<dt>Parâmetros:</dt><dd><ul class="simple">
+<li><p>novo_prazo (date): O novo prazo a ser associado à tarefa.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="tarefa_classes.tarefa.TarefaComPrazo.exibir">
 <span class="sig-name descname"><span class="pre">exibir</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#tarefa_classes.tarefa.TarefaComPrazo.exibir" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Método para exibir informações da tarefa com prazo.</p>
+<dl class="simple">
+<dt>Retorna:</dt><dd><ul class="simple">
+<li><p>str: Uma string com as informações da tarefa decorada com prazo.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -282,10 +330,24 @@
 <dt class="sig sig-object py" id="tarefa_classes.tarefa.TarefaDecorator">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tarefa_classes.tarefa.</span></span><span class="sig-name descname"><span class="pre">TarefaDecorator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tarefa</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#tarefa_classes.tarefa.Tarefa" title="tarefa_classes.tarefa.Tarefa"><span class="pre">Tarefa</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tarefa_classes.tarefa.TarefaDecorator" title="Link permanente para esta definição"></a></dt>
 <dd><p>Base: <a class="reference internal" href="#tarefa_classes.tarefa.Tarefa" title="tarefa_classes.tarefa.Tarefa"><code class="xref py py-class docutils literal notranslate"><span class="pre">Tarefa</span></code></a></p>
+<p>Classe abstrata que representa um decorator de tarefa.</p>
+<dl class="simple">
+<dt>Atributos:</dt><dd><ul class="simple">
+<li><p>_tarefa (Tarefa): Referência à tarefa decorada.</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="tarefa_classes.tarefa.TarefaDecorator.exibir">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">exibir</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#tarefa_classes.tarefa.TarefaDecorator.exibir" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Método abstrato para exibir informações da tarefa decorada.</p>
+<dl class="simple">
+<dt>Retorna:</dt><dd><ul class="simple">
+<li><p>str: Uma string com as informações da tarefa decorada.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -293,45 +355,115 @@
 <dt class="sig sig-object py" id="tarefa_classes.tarefa.TarefaOrganizador">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tarefa_classes.tarefa.</span></span><span class="sig-name descname"><span class="pre">TarefaOrganizador</span></span><a class="headerlink" href="#tarefa_classes.tarefa.TarefaOrganizador" title="Link permanente para esta definição"></a></dt>
 <dd><p>Base: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Classe que representa um organizador de tarefas.</p>
+<dl class="simple">
+<dt>Atributos:</dt><dd><ul class="simple">
+<li><p>tarefas (List[Tarefa]): Lista de tarefas no organizador.</p></li>
+<li><p>comandos (List[TarefaCommand]): Lista de comandos realizados no organizador.</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="tarefa_classes.tarefa.TarefaOrganizador.add_tarefa">
 <span class="sig-name descname"><span class="pre">add_tarefa</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tarefa</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#tarefa_classes.tarefa.Tarefa" title="tarefa_classes.tarefa.Tarefa"><span class="pre">Tarefa</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tarefa_classes.tarefa.TarefaOrganizador.add_tarefa" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Adiciona uma tarefa ao organizador.</p>
+<dl class="simple">
+<dt>Parâmetros:</dt><dd><ul class="simple">
+<li><p>tarefa (Tarefa): A tarefa a ser adicionada.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="tarefa_classes.tarefa.TarefaOrganizador.checkTarefaDecorator">
 <span class="sig-name descname"><span class="pre">checkTarefaDecorator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tarefa</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#tarefa_classes.tarefa.Tarefa" title="tarefa_classes.tarefa.Tarefa"><span class="pre">Tarefa</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tarefa_classes.tarefa.TarefaOrganizador.checkTarefaDecorator" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Verifica se a tarefa é um decorator e obtém a tarefa base.</p>
+<dl class="simple">
+<dt>Parâmetros:</dt><dd><ul class="simple">
+<li><p>tarefa (Tarefa): A tarefa a ser verificada.</p></li>
+</ul>
+</dd>
+<dt>Retorna:</dt><dd><ul class="simple">
+<li><p>Tarefa: A tarefa base, caso a tarefa seja um decorator.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="tarefa_classes.tarefa.TarefaOrganizador.del_tarefa">
 <span class="sig-name descname"><span class="pre">del_tarefa</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tarefa</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#tarefa_classes.tarefa.Tarefa" title="tarefa_classes.tarefa.Tarefa"><span class="pre">Tarefa</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tarefa_classes.tarefa.TarefaOrganizador.del_tarefa" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Remove uma tarefa do organizador.</p>
+<dl class="simple">
+<dt>Parâmetros:</dt><dd><ul class="simple">
+<li><p>tarefa (Tarefa): A tarefa a ser removida.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="tarefa_classes.tarefa.TarefaOrganizador.desfazer">
 <span class="sig-name descname"><span class="pre">desfazer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tarefa_classes.tarefa.TarefaOrganizador.desfazer" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Desfaz a última operação realizada no organizador.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="tarefa_classes.tarefa.TarefaOrganizador.edit_tarefa">
 <span class="sig-name descname"><span class="pre">edit_tarefa</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tarefa</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#tarefa_classes.tarefa.Tarefa" title="tarefa_classes.tarefa.Tarefa"><span class="pre">Tarefa</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">nTitulo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nDescricao</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nLembrete</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nPrazo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tarefa_classes.tarefa.TarefaOrganizador.edit_tarefa" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Edita uma tarefa existente no organizador.</p>
+<dl class="simple">
+<dt>Parâmetros:</dt><dd><ul class="simple">
+<li><p>tarefa (Tarefa): A tarefa a ser editada.</p></li>
+<li><p>nTitulo (str): O novo título da tarefa.</p></li>
+<li><p>nDescricao (str): A nova descrição da tarefa.</p></li>
+<li><p>nLembrete (str): O novo lembrete da tarefa.</p></li>
+<li><p>nPrazo (str): O novo prazo da tarefa.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="tarefa_classes.tarefa.TarefaOrganizador.get_tarefa">
 <span class="sig-name descname"><span class="pre">get_tarefa</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">titulo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tarefa_classes.tarefa.TarefaOrganizador.get_tarefa" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Obtém uma tarefa pelo título.</p>
+<dl class="simple">
+<dt>Parâmetros:</dt><dd><ul class="simple">
+<li><p>titulo (str): O título da tarefa a ser buscada.</p></li>
+</ul>
+</dd>
+<dt>Retorna:</dt><dd><ul class="simple">
+<li><p>Tarefa or None: A tarefa encontrada ou None se não encontrada.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="tarefa_classes.tarefa.TarefaOrganizador.mark_tarefa">
 <span class="sig-name descname"><span class="pre">mark_tarefa</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tarefa</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#tarefa_classes.tarefa.Tarefa" title="tarefa_classes.tarefa.Tarefa"><span class="pre">Tarefa</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tarefa_classes.tarefa.TarefaOrganizador.mark_tarefa" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Marca uma tarefa como concluída.</p>
+<dl class="simple">
+<dt>Parâmetros:</dt><dd><ul class="simple">
+<li><p>tarefa (Tarefa): A tarefa a ser marcada como concluída.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="tarefa_classes.tarefa.TarefaOrganizador.sort_tarefas">
 <span class="sig-name descname"><span class="pre">sort_tarefas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filtro</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tarefa_classes.tarefa.TarefaOrganizador.sort_tarefas" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Ordena a lista de tarefas no organizador.</p>
+<dl class="simple">
+<dt>Parâmetros:</dt><dd><ul class="simple">
+<li><p>filtro (str): O critério de ordenação das tarefas (por título ou por prazo).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -358,44 +490,30 @@
 <li><p>copy: Módulo que fornece funções para criar cópias de objetos.</p></li>
 </ul>
 </dd>
-<dt>Atributos:</dt><dd><ul class="simple">
-<li><p>Nenhum atributo relevante é definido nas classes.</p></li>
-</ul>
-</dd>
-<dt>Métodos:</dt><dd><ul class="simple">
-<li><p>TarefaCommand.executar(): Método abstrato que executa o comando em uma tarefa.</p></li>
-<li><p>TarefaCommand.desfazer_operacao(): Método abstrato que desfaz a operação realizada pelo comando.</p></li>
-<li><p>CriarTarefaCommand.__init__(tarefa, organizador): Método construtor da classe CriarTarefaCommand, que recebe uma tarefa a ser criada e o organizador de tarefas.</p></li>
-<li><p>CriarTarefaCommand.executar(): Método que executa o comando de criação de tarefa.</p></li>
-<li><p>CriarTarefaCommand.desfazer_operacao(): Método que desfaz a operação de criação de tarefa.</p></li>
-<li><p>EditarTarefaCommand.__init__(tarefa, nTitulo, nDescricao, nLembrete, nPrazo, organizador): Método construtor da classe EditarTarefaCommand, que recebe os dados para editar uma tarefa, a tarefa original e o organizador de tarefas.</p></li>
-<li><p>EditarTarefaCommand.executar(): Método que executa o comando de edição de tarefa.</p></li>
-<li><p>EditarTarefaCommand.desfazer_operacao(): Método que desfaz a operação de edição de tarefa.</p></li>
-<li><p>ExcluirTarefaCommand.__init__(tarefa, organizador): Método construtor da classe ExcluirTarefaCommand, que recebe a tarefa a ser excluída e o organizador de tarefas.</p></li>
-<li><p>ExcluirTarefaCommand.executar(): Método que executa o comando de exclusão de tarefa.</p></li>
-<li><p>ExcluirTarefaCommand.desfazer_operacao(): Método que desfaz a operação de exclusão de tarefa.</p></li>
-<li><p>MarcarConcluidaCommand.__init__(tarefa, organizador): Método construtor da classe MarcarConcluidaCommand, que recebe a tarefa a ser marcada como concluída e o organizador de tarefas.</p></li>
-<li><p>MarcarConcluidaCommand.executar(): Método que executa o comando de marcação de tarefa como concluída.</p></li>
-<li><p>MarcarConcluidaCommand.desfazer_operacao(): Método que desfaz a operação de marcação de tarefa como concluída.</p></li>
-<li><p>OrdenarListaTarefasCommand.__init__(organizador, filtro): Método construtor da classe OrdenarListaTarefasCommand, que recebe o organizador de tarefas e o filtro de ordenação.</p></li>
-<li><p>OrdenarListaTarefasCommand.executar(): Método que executa o comando de ordenação da lista de tarefas.</p></li>
-<li><p>OrdenarListaTarefasCommand.desfazer_operacao(): Método que desfaz a operação de ordenação da lista de tarefas.</p></li>
-</ul>
-</dd>
 </dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="tarefa_classes.tarefa_command.CriarTarefaCommand">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tarefa_classes.tarefa_command.</span></span><span class="sig-name descname"><span class="pre">CriarTarefaCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tarefa</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#tarefa_classes.tarefa.Tarefa" title="tarefa_classes.tarefa.Tarefa"><span class="pre">Tarefa</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">organizador</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#tarefa_classes.tarefa.TarefaOrganizador" title="tarefa_classes.tarefa.TarefaOrganizador"><span class="pre">TarefaOrganizador</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tarefa_classes.tarefa_command.CriarTarefaCommand" title="Link permanente para esta definição"></a></dt>
 <dd><p>Base: <a class="reference internal" href="#tarefa_classes.tarefa_command.TarefaCommand" title="tarefa_classes.tarefa_command.TarefaCommand"><code class="xref py py-class docutils literal notranslate"><span class="pre">TarefaCommand</span></code></a></p>
+<p>Classe que representa o comando de criar uma tarefa.</p>
+<dl class="simple">
+<dt>Atributos:</dt><dd><ul class="simple">
+<li><p>tarefa (Tarefa): A tarefa a ser criada.</p></li>
+<li><p>organizador (TarefaOrganizador): O organizador de tarefas onde a tarefa será adicionada.</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="tarefa_classes.tarefa_command.CriarTarefaCommand.desfazer_operacao">
 <span class="sig-name descname"><span class="pre">desfazer_operacao</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#tarefa_classes.tarefa_command.CriarTarefaCommand.desfazer_operacao" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Desfaz a operação de criação da tarefa.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="tarefa_classes.tarefa_command.CriarTarefaCommand.executar">
 <span class="sig-name descname"><span class="pre">executar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#tarefa_classes.tarefa_command.CriarTarefaCommand.executar" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Executa o comando de criar uma tarefa.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -403,15 +521,30 @@
 <dt class="sig sig-object py" id="tarefa_classes.tarefa_command.EditarTarefaCommand">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tarefa_classes.tarefa_command.</span></span><span class="sig-name descname"><span class="pre">EditarTarefaCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tarefa</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#tarefa_classes.tarefa.Tarefa" title="tarefa_classes.tarefa.Tarefa"><span class="pre">Tarefa</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">nTitulo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nDescricao</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nLembrete</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nPrazo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">date</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">organizador</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#tarefa_classes.tarefa.TarefaOrganizador" title="tarefa_classes.tarefa.TarefaOrganizador"><span class="pre">TarefaOrganizador</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tarefa_classes.tarefa_command.EditarTarefaCommand" title="Link permanente para esta definição"></a></dt>
 <dd><p>Base: <a class="reference internal" href="#tarefa_classes.tarefa_command.TarefaCommand" title="tarefa_classes.tarefa_command.TarefaCommand"><code class="xref py py-class docutils literal notranslate"><span class="pre">TarefaCommand</span></code></a></p>
+<p>Classe que representa o comando de editar uma tarefa.</p>
+<dl class="simple">
+<dt>Atributos:</dt><dd><ul class="simple">
+<li><p>tarefa (Tarefa): A tarefa a ser editada.</p></li>
+<li><p>copiaTarefa (Tarefa): Uma cópia da tarefa original antes da edição.</p></li>
+<li><p>nTitulo (str): O novo título da tarefa.</p></li>
+<li><p>nDescricao (str): A nova descrição da tarefa.</p></li>
+<li><p>nLembrete (Optional[str]): O novo lembrete da tarefa (pode ser None).</p></li>
+<li><p>nPrazo (Optional[date]): O novo prazo da tarefa (pode ser None).</p></li>
+<li><p>organizador (TarefaOrganizador): O organizador de tarefas onde a tarefa será editada.</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="tarefa_classes.tarefa_command.EditarTarefaCommand.desfazer_operacao">
 <span class="sig-name descname"><span class="pre">desfazer_operacao</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#tarefa_classes.tarefa_command.EditarTarefaCommand.desfazer_operacao" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Desfaz a operação de editar a tarefa, restaurando os valores originais da tarefa.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="tarefa_classes.tarefa_command.EditarTarefaCommand.executar">
 <span class="sig-name descname"><span class="pre">executar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#tarefa_classes.tarefa_command.EditarTarefaCommand.executar" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Executa o comando de editar a tarefa.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -419,15 +552,25 @@
 <dt class="sig sig-object py" id="tarefa_classes.tarefa_command.ExcluirTarefaCommand">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tarefa_classes.tarefa_command.</span></span><span class="sig-name descname"><span class="pre">ExcluirTarefaCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tarefa</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#tarefa_classes.tarefa.Tarefa" title="tarefa_classes.tarefa.Tarefa"><span class="pre">Tarefa</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">organizador</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#tarefa_classes.tarefa.TarefaOrganizador" title="tarefa_classes.tarefa.TarefaOrganizador"><span class="pre">TarefaOrganizador</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tarefa_classes.tarefa_command.ExcluirTarefaCommand" title="Link permanente para esta definição"></a></dt>
 <dd><p>Base: <a class="reference internal" href="#tarefa_classes.tarefa_command.TarefaCommand" title="tarefa_classes.tarefa_command.TarefaCommand"><code class="xref py py-class docutils literal notranslate"><span class="pre">TarefaCommand</span></code></a></p>
+<p>Classe que representa o comando de excluir uma tarefa.</p>
+<dl class="simple">
+<dt>Atributos:</dt><dd><ul class="simple">
+<li><p>tarefa (Tarefa): A tarefa a ser excluída.</p></li>
+<li><p>organizador (TarefaOrganizador): O organizador de tarefas onde a tarefa será excluída.</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="tarefa_classes.tarefa_command.ExcluirTarefaCommand.desfazer_operacao">
 <span class="sig-name descname"><span class="pre">desfazer_operacao</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#tarefa_classes.tarefa_command.ExcluirTarefaCommand.desfazer_operacao" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Desfaz a operação de exclusão da tarefa, adicionando a tarefa de volta ao organizador.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="tarefa_classes.tarefa_command.ExcluirTarefaCommand.executar">
 <span class="sig-name descname"><span class="pre">executar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#tarefa_classes.tarefa_command.ExcluirTarefaCommand.executar" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Executa o comando de excluir a tarefa.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -435,15 +578,25 @@
 <dt class="sig sig-object py" id="tarefa_classes.tarefa_command.MarcarConcluidaCommand">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tarefa_classes.tarefa_command.</span></span><span class="sig-name descname"><span class="pre">MarcarConcluidaCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tarefa</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#tarefa_classes.tarefa.Tarefa" title="tarefa_classes.tarefa.Tarefa"><span class="pre">Tarefa</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">organizador</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#tarefa_classes.tarefa.TarefaOrganizador" title="tarefa_classes.tarefa.TarefaOrganizador"><span class="pre">TarefaOrganizador</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tarefa_classes.tarefa_command.MarcarConcluidaCommand" title="Link permanente para esta definição"></a></dt>
 <dd><p>Base: <a class="reference internal" href="#tarefa_classes.tarefa_command.TarefaCommand" title="tarefa_classes.tarefa_command.TarefaCommand"><code class="xref py py-class docutils literal notranslate"><span class="pre">TarefaCommand</span></code></a></p>
+<p>Classe que representa o comando de marcar uma tarefa como concluída.</p>
+<dl class="simple">
+<dt>Atributos:</dt><dd><ul class="simple">
+<li><p>tarefa (Tarefa): A tarefa a ser marcada como concluída.</p></li>
+<li><p>organizador (TarefaOrganizador): O organizador de tarefas onde a tarefa será marcada como concluída.</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="tarefa_classes.tarefa_command.MarcarConcluidaCommand.desfazer_operacao">
 <span class="sig-name descname"><span class="pre">desfazer_operacao</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#tarefa_classes.tarefa_command.MarcarConcluidaCommand.desfazer_operacao" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Desfaz a operação de marcar a tarefa como concluída, marcando a tarefa como pendente novamente.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="tarefa_classes.tarefa_command.MarcarConcluidaCommand.executar">
 <span class="sig-name descname"><span class="pre">executar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#tarefa_classes.tarefa_command.MarcarConcluidaCommand.executar" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Executa o comando de marcar a tarefa como concluída.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -451,15 +604,26 @@
 <dt class="sig sig-object py" id="tarefa_classes.tarefa_command.OrdenarListaTarefasCommand">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tarefa_classes.tarefa_command.</span></span><span class="sig-name descname"><span class="pre">OrdenarListaTarefasCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">organizador</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#tarefa_classes.tarefa.TarefaOrganizador" title="tarefa_classes.tarefa.TarefaOrganizador"><span class="pre">TarefaOrganizador</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">filtro</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tarefa_classes.tarefa_command.OrdenarListaTarefasCommand" title="Link permanente para esta definição"></a></dt>
 <dd><p>Base: <a class="reference internal" href="#tarefa_classes.tarefa_command.TarefaCommand" title="tarefa_classes.tarefa_command.TarefaCommand"><code class="xref py py-class docutils literal notranslate"><span class="pre">TarefaCommand</span></code></a></p>
+<p>Classe que representa o comando de ordenar a lista de tarefas.</p>
+<dl class="simple">
+<dt>Atributos:</dt><dd><ul class="simple">
+<li><p>listaTarefasCopia (List[Tarefa]): Uma cópia da lista de tarefas original antes da ordenação.</p></li>
+<li><p>organizador (TarefaOrganizador): O organizador de tarefas cuja lista será ordenada.</p></li>
+<li><p>filtro (str): O critério de ordenação (pode ser “Data de criação”, “Tipo de tarefa” ou “Título”).</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="tarefa_classes.tarefa_command.OrdenarListaTarefasCommand.desfazer_operacao">
 <span class="sig-name descname"><span class="pre">desfazer_operacao</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#tarefa_classes.tarefa_command.OrdenarListaTarefasCommand.desfazer_operacao" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Desfaz a operação de ordenar a lista de tarefas, restaurando a lista de tarefas para o estado original.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="tarefa_classes.tarefa_command.OrdenarListaTarefasCommand.executar">
 <span class="sig-name descname"><span class="pre">executar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#tarefa_classes.tarefa_command.OrdenarListaTarefasCommand.executar" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Executa o comando de ordenar a lista de tarefas.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -467,15 +631,24 @@
 <dt class="sig sig-object py" id="tarefa_classes.tarefa_command.TarefaCommand">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tarefa_classes.tarefa_command.</span></span><span class="sig-name descname"><span class="pre">TarefaCommand</span></span><a class="headerlink" href="#tarefa_classes.tarefa_command.TarefaCommand" title="Link permanente para esta definição"></a></dt>
 <dd><p>Base: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Classe abstrata que representa um comando relacionado a uma tarefa.</p>
+<dl class="simple">
+<dt>Atributos:</dt><dd><ul class="simple">
+<li><p>Nenhum atributo na classe abstrata.</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="tarefa_classes.tarefa_command.TarefaCommand.desfazer_operacao">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">desfazer_operacao</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tarefa_classes.tarefa_command.TarefaCommand.desfazer_operacao" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Método abstrato para desfazer a operação realizada pelo comando.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="tarefa_classes.tarefa_command.TarefaCommand.executar">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">executar</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tarefa_classes.tarefa_command.TarefaCommand.executar" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Método abstrato para executar o comando.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -497,27 +670,33 @@
 <li><p>abstractmethod: Decorador para um método abstrato, que deve ser implementado nas classes derivadas.</p></li>
 </ul>
 </dd>
-<dt>Atributos:</dt><dd><ul class="simple">
-<li><p>Nenhum atributo relevante é definido nas classes.</p></li>
-</ul>
-</dd>
-<dt>Métodos:</dt><dd><ul class="simple">
-<li><p>TarefaFactory.criar_tarefa(): Método abstrato que cria e retorna uma instância de Tarefa.</p></li>
-<li><p>TarefaTrabalho.exibir(): Método que retorna uma string formatada com as informações de uma tarefa de trabalho.</p></li>
-<li><p>TarefaTrabalhoFactory.criar_tarefa(titulo, descricao): Método que cria e retorna uma tarefa de trabalho com o título e descrição especificados.</p></li>
-<li><p>TarefaComPrioridade.exibir(): Método que retorna uma string formatada com as informações de uma tarefa com prioridade.</p></li>
-<li><p>TarefaComPrioridadeFactory.criar_tarefa(titulo, descricao): Método que cria e retorna uma tarefa com prioridade com o título e descrição especificados.</p></li>
-</ul>
-</dd>
 </dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="tarefa_classes.tarefa_factory.TarefaComPrioridade">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tarefa_classes.tarefa_factory.</span></span><span class="sig-name descname"><span class="pre">TarefaComPrioridade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">titulo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">descricao</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tarefa_classes.tarefa_factory.TarefaComPrioridade" title="Link permanente para esta definição"></a></dt>
 <dd><p>Base: <a class="reference internal" href="#tarefa_classes.tarefa.TarefaBase" title="tarefa_classes.tarefa.TarefaBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">TarefaBase</span></code></a></p>
+<p>Classe que representa uma tarefa com prioridade.</p>
+<dl class="simple">
+<dt>Métodos:</dt><dd><ul class="simple">
+<li><p>exibir(self) -&gt; str: Retorna uma string formatada com os detalhes da tarefa com prioridade.</p></li>
+</ul>
+</dd>
+<dt>Atributos:</dt><dd><ul class="simple">
+<li><p>Nenhum atributo específico nesta classe. Os atributos são herdados da classe TarefaBase.</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="tarefa_classes.tarefa_factory.TarefaComPrioridade.exibir">
 <span class="sig-name descname"><span class="pre">exibir</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#tarefa_classes.tarefa_factory.TarefaComPrioridade.exibir" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Retorna uma string formatada com os detalhes da tarefa com prioridade.</p>
+<dl class="simple">
+<dt>Retorna:</dt><dd><ul class="simple">
+<li><p>str: Uma string com os detalhes da tarefa com prioridade.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -525,10 +704,33 @@
 <dt class="sig sig-object py" id="tarefa_classes.tarefa_factory.TarefaComPrioridadeFactory">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tarefa_classes.tarefa_factory.</span></span><span class="sig-name descname"><span class="pre">TarefaComPrioridadeFactory</span></span><a class="headerlink" href="#tarefa_classes.tarefa_factory.TarefaComPrioridadeFactory" title="Link permanente para esta definição"></a></dt>
 <dd><p>Base: <a class="reference internal" href="#tarefa_classes.tarefa_factory.TarefaFactory" title="tarefa_classes.tarefa_factory.TarefaFactory"><code class="xref py py-class docutils literal notranslate"><span class="pre">TarefaFactory</span></code></a></p>
+<p>Classe que implementa a fábrica de tarefas com prioridade.</p>
+<dl class="simple">
+<dt>Métodos:</dt><dd><ul class="simple">
+<li><p>criar_tarefa(self, titulo: str, descricao: str) -&gt; Tarefa: Cria e retorna uma nova instância de TarefaComPrioridade.</p></li>
+</ul>
+</dd>
+<dt>Atributos:</dt><dd><ul class="simple">
+<li><p>Nenhum atributo específico nesta classe. Os atributos são herdados da classe TarefaFactory.</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="tarefa_classes.tarefa_factory.TarefaComPrioridadeFactory.criar_tarefa">
 <span class="sig-name descname"><span class="pre">criar_tarefa</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">titulo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">descricao</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#tarefa_classes.tarefa.Tarefa" title="tarefa_classes.tarefa.Tarefa"><span class="pre">Tarefa</span></a></span></span><a class="headerlink" href="#tarefa_classes.tarefa_factory.TarefaComPrioridadeFactory.criar_tarefa" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Cria e retorna uma nova instância de TarefaComPrioridade.</p>
+<dl class="simple">
+<dt>Parâmetros:</dt><dd><ul class="simple">
+<li><p>titulo (str): O título da tarefa.</p></li>
+<li><p>descricao (str): A descrição da tarefa.</p></li>
+</ul>
+</dd>
+<dt>Retorna:</dt><dd><ul class="simple">
+<li><p>TarefaComPrioridade: Uma nova instância de TarefaComPrioridade.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -536,10 +738,33 @@
 <dt class="sig sig-object py" id="tarefa_classes.tarefa_factory.TarefaFactory">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tarefa_classes.tarefa_factory.</span></span><span class="sig-name descname"><span class="pre">TarefaFactory</span></span><a class="headerlink" href="#tarefa_classes.tarefa_factory.TarefaFactory" title="Link permanente para esta definição"></a></dt>
 <dd><p>Base: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Classe abstrata que define uma fábrica de tarefas.</p>
+<dl class="simple">
+<dt>Métodos abstratos:</dt><dd><ul class="simple">
+<li><p>criar_tarefa(self, titulo: str, descricao: str) -&gt; Tarefa: Cria e retorna uma nova instância de Tarefa.</p></li>
+</ul>
+</dd>
+<dt>Atributos:</dt><dd><ul class="simple">
+<li><p>Nenhum atributo na classe abstrata.</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="tarefa_classes.tarefa_factory.TarefaFactory.criar_tarefa">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">criar_tarefa</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#tarefa_classes.tarefa.Tarefa" title="tarefa_classes.tarefa.Tarefa"><span class="pre">Tarefa</span></a></span></span><a class="headerlink" href="#tarefa_classes.tarefa_factory.TarefaFactory.criar_tarefa" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Método abstrato para criar uma nova tarefa.</p>
+<dl class="simple">
+<dt>Parâmetros:</dt><dd><ul class="simple">
+<li><p>titulo (str): O título da tarefa.</p></li>
+<li><p>descricao (str): A descrição da tarefa.</p></li>
+</ul>
+</dd>
+<dt>Retorna:</dt><dd><ul class="simple">
+<li><p>Tarefa: Uma nova instância de Tarefa.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -547,10 +772,28 @@
 <dt class="sig sig-object py" id="tarefa_classes.tarefa_factory.TarefaTrabalho">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tarefa_classes.tarefa_factory.</span></span><span class="sig-name descname"><span class="pre">TarefaTrabalho</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">titulo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">descricao</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tarefa_classes.tarefa_factory.TarefaTrabalho" title="Link permanente para esta definição"></a></dt>
 <dd><p>Base: <a class="reference internal" href="#tarefa_classes.tarefa.TarefaBase" title="tarefa_classes.tarefa.TarefaBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">TarefaBase</span></code></a></p>
+<p>Classe que representa uma tarefa de trabalho.</p>
+<dl class="simple">
+<dt>Métodos:</dt><dd><ul class="simple">
+<li><p>exibir(self) -&gt; str: Retorna uma string formatada com os detalhes da tarefa de trabalho.</p></li>
+</ul>
+</dd>
+<dt>Atributos:</dt><dd><ul class="simple">
+<li><p>Nenhum atributo específico nesta classe. Os atributos são herdados da classe TarefaBase.</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="tarefa_classes.tarefa_factory.TarefaTrabalho.exibir">
 <span class="sig-name descname"><span class="pre">exibir</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#tarefa_classes.tarefa_factory.TarefaTrabalho.exibir" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Retorna uma string formatada com os detalhes da tarefa de trabalho.</p>
+<dl class="simple">
+<dt>Retorna:</dt><dd><ul class="simple">
+<li><p>str: Uma string com os detalhes da tarefa de trabalho.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -558,10 +801,33 @@
 <dt class="sig sig-object py" id="tarefa_classes.tarefa_factory.TarefaTrabalhoFactory">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tarefa_classes.tarefa_factory.</span></span><span class="sig-name descname"><span class="pre">TarefaTrabalhoFactory</span></span><a class="headerlink" href="#tarefa_classes.tarefa_factory.TarefaTrabalhoFactory" title="Link permanente para esta definição"></a></dt>
 <dd><p>Base: <a class="reference internal" href="#tarefa_classes.tarefa_factory.TarefaFactory" title="tarefa_classes.tarefa_factory.TarefaFactory"><code class="xref py py-class docutils literal notranslate"><span class="pre">TarefaFactory</span></code></a></p>
+<p>Classe que implementa a fábrica de tarefas de trabalho.</p>
+<dl class="simple">
+<dt>Métodos:</dt><dd><ul class="simple">
+<li><p>criar_tarefa(self, titulo: str, descricao: str) -&gt; Tarefa: Cria e retorna uma nova instância de TarefaTrabalho.</p></li>
+</ul>
+</dd>
+<dt>Atributos:</dt><dd><ul class="simple">
+<li><p>Nenhum atributo específico nesta classe. Os atributos são herdados da classe TarefaFactory.</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="tarefa_classes.tarefa_factory.TarefaTrabalhoFactory.criar_tarefa">
 <span class="sig-name descname"><span class="pre">criar_tarefa</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">titulo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">descricao</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#tarefa_classes.tarefa.Tarefa" title="tarefa_classes.tarefa.Tarefa"><span class="pre">Tarefa</span></a></span></span><a class="headerlink" href="#tarefa_classes.tarefa_factory.TarefaTrabalhoFactory.criar_tarefa" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Cria e retorna uma nova instância de TarefaTrabalho.</p>
+<dl class="simple">
+<dt>Parâmetros:</dt><dd><ul class="simple">
+<li><p>titulo (str): O título da tarefa.</p></li>
+<li><p>descricao (str): A descrição da tarefa.</p></li>
+</ul>
+</dd>
+<dt>Retorna:</dt><dd><ul class="simple">
+<li><p>TarefaTrabalho: Uma nova instância de TarefaTrabalho.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -571,19 +837,6 @@
 <span class="target" id="module-tarefa_classes"></span><p>Módulo tarefa_classes</p>
 <p>Este módulo contém classes relacionadas a tarefas, organização de tarefas e comandos para manipular as tarefas.</p>
 <dl class="simple">
-<dt>Classes:</dt><dd><ul class="simple">
-<li><p>TarefaBase: Classe abstrata que representa uma tarefa básica.</p></li>
-<li><p>TarefaComLembrete: Classe que representa uma tarefa com lembrete.</p></li>
-<li><p>TarefaComPrazo: Classe que representa uma tarefa com prazo.</p></li>
-<li><p>TarefaOrganizador: Classe que representa um organizador de tarefas.</p></li>
-<li><p>TarefaComPrioridadeFactory: Classe que representa uma fábrica de tarefas de trabalho.</p></li>
-<li><p>TarefaTrabalhoFactory: Classe que representa uma fábrica de tarefas com prioridade.</p></li>
-<li><p>CriarTarefaCommand: Classe que representa o comando de criar uma tarefa.</p></li>
-<li><p>ExcluirTarefaCommand: Classe que representa o comando de excluir uma tarefa.</p></li>
-<li><p>EditarTarefaCommand: Classe que representa o comando de editar uma tarefa.</p></li>
-<li><p>MarcarConcluidaCommand: Classe que representa o comando de marcar uma tarefa como concluída.</p></li>
-</ul>
-</dd>
 <dt>Módulos importados:</dt><dd><ul class="simple">
 <li><p>tarefa_classes.tarefa: Módulo que contém as classes TarefaBase, TarefaComLembrete, TarefaComPrazo e TarefaOrganizador.</p></li>
 <li><p>tarefa_classes.tarefa_factory: Módulo que contém as classes TarefaComPrioridadeFactory e TarefaTrabalhoFactory.</p></li>

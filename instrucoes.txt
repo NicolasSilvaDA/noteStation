@@ -1,0 +1,24 @@
+(NECESSITA PYTHON INSTALADO)
+
+CRIAR AMBIENTE VIRTUAL PARA REPRODUZIR O APLICATIVO
+
+    Para criar o venv, abra o terminal de comando no diretório raiz do projeto e digite(sem as aspas):
+    - "python -m venv venv"
+    - "python.exe -m venv venv"(Caso o de cima não pegue)
+
+UTILIZAR AMBIENTE VIRTUAL
+
+    Ainda com o terminal de comando no diretório raiz do projeto, digite(sem as aspas) "venv\Scripts\activate"
+    Você saberá que está utilizando-o quando aparecer um '(venv)' na linha de comando.
+
+INSTALAR PACOTES NO AMBIENTE VIRTUAL
+
+    Para instalar os pacotes, ainda com o terminal de comando no diretório raiz do projeto, digite(sem as aspas):
+    - "pip install -r requirements.txt"
+
+    Após um breve momento, os pacotes estarão devidamente instalados no ambiente virtual
+
+RODANDO O APLICATIVO
+
+    Para rodar o aplicativo, você pode executá-lo no terminal de comando no diretório raiz do projeto
+    inserindo: "python notestation_App\\main.py "

@@ -123,110 +123,174 @@
 <li><p>gerenciamento_arquivos: Módulo contendo o Encoder personalizado TarefaEncoder para serialização das tarefas em formato JSON.</p></li>
 </ul>
 </dd>
-<dt>Atributos:</dt><dd><ul class="simple">
-<li><p>organizador: Uma instância da classe TarefaOrganizador que gerencia as tarefas do programa.</p></li>
-<li><p>tPrioridade: Uma instância da classe TarefaComPrioridadeFactory que é utilizada para criar tarefas com prioridade.</p></li>
-<li><p>tTrabalho: Uma instância da classe TarefaTrabalhoFactory que é utilizada para criar tarefas de trabalho.</p></li>
-<li><p>dir: Uma string representando o diretório do arquivo JSON usado para armazenar as tarefas.</p></li>
-</ul>
-</dd>
-<dt>Métodos:</dt><dd><ul class="simple">
-<li><p>carregar_arquivo(): Carrega as tarefas a partir do arquivo JSON especificado no atributo “dir” e as adiciona ao organizador.</p></li>
-<li><p>exibir(): Exibe a interface gráfica principal do programa, mostrando a lista de tarefas e opções para interagir com elas.</p></li>
-<li><p>visualizar_tarefa(Sender): Exibe os detalhes de uma tarefa em uma janela popup quando o usuário clica em “Visualizar tarefa”.</p></li>
-<li><p>editar_tarefa_window(Sender): Abre uma janela popup para editar os atributos de uma tarefa quando o usuário clica em “Editar tarefa”.</p></li>
-<li><p>editar_tarefa(Sender): Atualiza os atributos de uma tarefa após o usuário realizar as alterações na janela de edição.</p></li>
-<li><p>marcar_concluida(Sender): Marca uma tarefa como concluída e exibe uma mensagem em uma janela popup.</p></li>
-<li><p>atualizar_lista(): Atualiza a lista de tarefas exibida na interface gráfica após modificações (adicionar, editar, excluir tarefas).</p></li>
-<li><p>exibir_lembrete(): Exibe ou oculta o campo de lembrete dependendo do valor do checkbox “Lembrete”.</p></li>
-<li><p>exibir_prazo(): Exibe ou oculta o campo de prazo dependendo do valor do checkbox “Prazo”.</p></li>
-<li><p>checar_tarefa(titulo): Verifica se o título da tarefa já existe na lista de títulos de tarefas exibida na interface gráfica.</p></li>
-<li><p>criar_tarefa_popup(): Abre uma janela popup para criar uma nova tarefa quando o usuário clica em “Adicionar tarefa”.</p></li>
-<li><p>criar_tarefa(): Cria uma nova tarefa com os atributos especificados pelo usuário na janela de criação e a adiciona ao organizador.</p></li>
-<li><p>excluir_tarefa(Sender): Exclui uma tarefa selecionada na lista quando o usuário clica em “Excluir tarefa”.</p></li>
-<li><p>desfazer_operacao(): Desfaz a última operação realizada pelo usuário (adicionar, editar ou excluir tarefa).</p></li>
-<li><p>ordenar_lista(Sender): Ordena a lista de tarefas exibida na interface gráfica de acordo com o filtro especificado (título, data de criação ou tipo de tarefa).</p></li>
-</ul>
-</dd>
 </dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="notestation_interfaces.interface_notestation.TelaInicial">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">notestation_interfaces.interface_notestation.</span></span><span class="sig-name descname"><span class="pre">TelaInicial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#notestation_interfaces.interface_notestation.TelaInicial" title="Link permanente para esta definição"></a></dt>
 <dd><p>Base: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Classe responsável por representar a tela inicial do programa e gerenciar as tarefas e a interação com o usuário.</p>
+<dl class="simple">
+<dt>Atributos:</dt><dd><ul class="simple">
+<li><p>organizador (TarefaOrganizador): Instância da classe TarefaOrganizador que gerencia as tarefas do programa.</p></li>
+<li><p>tPrioridade (TarefaComPrioridadeFactory): Instância da classe TarefaComPrioridadeFactory utilizada para criar tarefas com prioridade.</p></li>
+<li><p>tTrabalho (TarefaTrabalhoFactory): Instância da classe TarefaTrabalhoFactory utilizada para criar tarefas de trabalho.</p></li>
+<li><p>dir (str): Diretório do arquivo JSON usado para armazenar as tarefas.</p></li>
+</ul>
+</dd>
+<dt>Métodos:</dt><dd><ul class="simple">
+<li><p>carregar_arquivo()</p></li>
+<li><p>exibir()</p></li>
+<li><p>visualizar_tarefa(Sender)</p></li>
+<li><p>editar_tarefa_window(Sender)</p></li>
+<li><p>editar_tarefa(Sender)</p></li>
+<li><p>marcar_concluida(Sender)</p></li>
+<li><p>atualizar_lista()</p></li>
+<li><p>exibir_lembrete()</p></li>
+<li><p>exibir_prazo()</p></li>
+<li><p>checar_tarefa(titulo)</p></li>
+<li><p>criar_tarefa_popup()</p></li>
+<li><p>criar_tarefa()</p></li>
+<li><p>excluir_tarefa(Sender)</p></li>
+<li><p>desfazer_operacao()</p></li>
+<li><p>ordenar_lista(Sender)</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="notestation_interfaces.interface_notestation.TelaInicial.atualizar_lista">
 <span class="sig-name descname"><span class="pre">atualizar_lista</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#notestation_interfaces.interface_notestation.TelaInicial.atualizar_lista" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Atualiza a lista de tarefas exibida na interface gráfica após modificações (adicionar, editar, excluir tarefas).</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="notestation_interfaces.interface_notestation.TelaInicial.carregar_arquivo">
 <span class="sig-name descname"><span class="pre">carregar_arquivo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#notestation_interfaces.interface_notestation.TelaInicial.carregar_arquivo" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Carrega as tarefas a partir do arquivo JSON especificado no atributo “dir” e as adiciona ao organizador.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="notestation_interfaces.interface_notestation.TelaInicial.checar_tarefa">
 <span class="sig-name descname"><span class="pre">checar_tarefa</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">titulo</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#notestation_interfaces.interface_notestation.TelaInicial.checar_tarefa" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Verifica se o título da tarefa já existe na lista de títulos de tarefas exibida na interface gráfica.</p>
+<dl class="simple">
+<dt>Atributos:</dt><dd><ul class="simple">
+<li><p>titulo (str): O título da tarefa a ser verificado.</p></li>
+</ul>
+</dd>
+<dt>Retorna:</dt><dd><ul class="simple">
+<li><p>bool: True se o título não existir, False caso contrário.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="notestation_interfaces.interface_notestation.TelaInicial.criar_tarefa">
 <span class="sig-name descname"><span class="pre">criar_tarefa</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#notestation_interfaces.interface_notestation.TelaInicial.criar_tarefa" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Cria uma nova tarefa com os atributos especificados pelo usuário na janela de criação e a adiciona ao organizador.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="notestation_interfaces.interface_notestation.TelaInicial.criar_tarefa_popup">
 <span class="sig-name descname"><span class="pre">criar_tarefa_popup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#notestation_interfaces.interface_notestation.TelaInicial.criar_tarefa_popup" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Abre uma janela popup para criar uma nova tarefa quando o usuário clica em “Adicionar tarefa”.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="notestation_interfaces.interface_notestation.TelaInicial.desfazer_operacao">
 <span class="sig-name descname"><span class="pre">desfazer_operacao</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#notestation_interfaces.interface_notestation.TelaInicial.desfazer_operacao" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Desfaz a última operação realizada pelo usuário (adicionar, editar, excluir, concluir e ordenar).</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="notestation_interfaces.interface_notestation.TelaInicial.editar_tarefa">
 <span class="sig-name descname"><span class="pre">editar_tarefa</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Sender</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#notestation_interfaces.interface_notestation.TelaInicial.editar_tarefa" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Atualiza os atributos de uma tarefa após o usuário realizar as alterações na janela de edição.</p>
+<dl class="simple">
+<dt>Atributos:</dt><dd><ul class="simple">
+<li><p>Sender: O objeto que enviou o sinal de clique.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="notestation_interfaces.interface_notestation.TelaInicial.editar_tarefa_window">
 <span class="sig-name descname"><span class="pre">editar_tarefa_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Sender</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#notestation_interfaces.interface_notestation.TelaInicial.editar_tarefa_window" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Abre uma janela popup para editar os atributos de uma tarefa quando o usuário clica em “Editar tarefa”.</p>
+<dl class="simple">
+<dt>Atributos:</dt><dd><ul class="simple">
+<li><p>Sender: O objeto que enviou o sinal de clique.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="notestation_interfaces.interface_notestation.TelaInicial.excluir_tarefa">
 <span class="sig-name descname"><span class="pre">excluir_tarefa</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Sender</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#notestation_interfaces.interface_notestation.TelaInicial.excluir_tarefa" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Exclui uma tarefa selecionada na lista quando o usuário clica em “Excluir tarefa”.</p>
+<dl class="simple">
+<dt>Atributos:</dt><dd><ul class="simple">
+<li><p>Sender: O objeto que enviou o sinal de clique.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="notestation_interfaces.interface_notestation.TelaInicial.exibir">
 <span class="sig-name descname"><span class="pre">exibir</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#notestation_interfaces.interface_notestation.TelaInicial.exibir" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Exibe a interface gráfica principal do programa, mostrando a lista de tarefas e opções para interagir com elas.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="notestation_interfaces.interface_notestation.TelaInicial.exibir_lembrete">
 <span class="sig-name descname"><span class="pre">exibir_lembrete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#notestation_interfaces.interface_notestation.TelaInicial.exibir_lembrete" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Exibe ou oculta o campo de lembrete dependendo do valor do checkbox “Lembrete”.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="notestation_interfaces.interface_notestation.TelaInicial.exibir_prazo">
 <span class="sig-name descname"><span class="pre">exibir_prazo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#notestation_interfaces.interface_notestation.TelaInicial.exibir_prazo" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Exibe ou oculta o campo de prazo dependendo do valor do checkbox “Prazo”.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="notestation_interfaces.interface_notestation.TelaInicial.marcar_concluida">
 <span class="sig-name descname"><span class="pre">marcar_concluida</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Sender</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#notestation_interfaces.interface_notestation.TelaInicial.marcar_concluida" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Marca uma tarefa como concluída e exibe uma mensagem em uma janela popup.</p>
+<dl class="simple">
+<dt>Atributos:</dt><dd><ul class="simple">
+<li><p>Sender: O objeto que enviou o sinal de clique.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="notestation_interfaces.interface_notestation.TelaInicial.ordenar_lista">
 <span class="sig-name descname"><span class="pre">ordenar_lista</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Sender</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#notestation_interfaces.interface_notestation.TelaInicial.ordenar_lista" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Ordena a lista de tarefas exibida na interface gráfica de acordo com o filtro especificado (título, data de criação ou tipo de tarefa).</p>
+<dl class="simple">
+<dt>Atributos:</dt><dd><ul class="simple">
+<li><p>Sender: O objeto que enviou o sinal de clique.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="notestation_interfaces.interface_notestation.TelaInicial.visualizar_tarefa">
 <span class="sig-name descname"><span class="pre">visualizar_tarefa</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Sender</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#notestation_interfaces.interface_notestation.TelaInicial.visualizar_tarefa" title="Link permanente para esta definição"></a></dt>
-<dd></dd></dl>
+<dd><p>Exibe os detalhes de uma tarefa em uma janela popup quando o usuário clica em “Visualizar tarefa”.</p>
+<dl class="simple">
+<dt>Atributos:</dt><dd><ul class="simple">
+<li><p>Sender: O objeto que enviou o sinal de clique.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -245,25 +309,6 @@
 </dd>
 <dt>Atributos:</dt><dd><ul class="simple">
 <li><p>Nenhum atributo relevante é definido na classe.</p></li>
-</ul>
-</dd>
-<dt>Métodos:</dt><dd><ul class="simple">
-<li><p>TelaInicial.__init__(dir): Método construtor da classe TelaInicial, que recebe o diretório do arquivo de armazenamento de tarefas.</p></li>
-<li><p>TelaInicial.carregar_arquivo(): Método que carrega as tarefas do arquivo de armazenamento.</p></li>
-<li><p>TelaInicial.exibir(): Método que exibe a interface principal do aplicativo.</p></li>
-<li><p>TelaInicial.visualizar_tarefa(Sender): Método que exibe detalhes de uma tarefa específica.</p></li>
-<li><p>TelaInicial.editar_tarefa_window(Sender): Método que exibe a janela de edição de uma tarefa.</p></li>
-<li><p>TelaInicial.editar_tarefa(Sender): Método que edita uma tarefa com base nos dados fornecidos pelo usuário.</p></li>
-<li><p>TelaInicial.marcar_concluida(Sender): Método que marca uma tarefa como concluída.</p></li>
-<li><p>TelaInicial.atualizar_lista(): Método que atualiza a lista de tarefas exibida na interface e salva as alterações no arquivo de armazenamento.</p></li>
-<li><p>TelaInicial.exibir_lembrete(): Método que exibe o campo de lembrete ao criar ou editar uma tarefa.</p></li>
-<li><p>TelaInicial.exibir_prazo(): Método que exibe o campo de prazo ao criar ou editar uma tarefa.</p></li>
-<li><p>TelaInicial.checar_tarefa(titulo): Método que verifica se uma tarefa com um determinado título já existe.</p></li>
-<li><p>TelaInicial.criar_tarefa_popup(): Método que exibe a janela para criar uma nova tarefa.</p></li>
-<li><p>TelaInicial.criar_tarefa(): Método que cria uma nova tarefa com base nos dados fornecidos pelo usuário.</p></li>
-<li><p>TelaInicial.excluir_tarefa(Sender): Método que exclui uma tarefa da lista.</p></li>
-<li><p>TelaInicial.desfazer_operacao(): Método que desfaz a última operação realizada.</p></li>
-<li><p>TelaInicial.ordenar_lista(Sender): Método que ordena a lista de tarefas com base no filtro selecionado pelo usuário.</p></li>
 </ul>
 </dd>
 </dl>

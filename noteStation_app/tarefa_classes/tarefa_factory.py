@@ -11,16 +11,6 @@ Classes:
 Módulos importados:
     - ABC: Módulo do pacote "abc" que fornece as classes e funções para trabalhar com metaprogramação orientada a aspectos.
     - abstractmethod: Decorador para um método abstrato, que deve ser implementado nas classes derivadas.
-
-Atributos:
-    - Nenhum atributo relevante é definido nas classes.
-
-Métodos:
-    - TarefaFactory.criar_tarefa(): Método abstrato que cria e retorna uma instância de Tarefa.
-    - TarefaTrabalho.exibir(): Método que retorna uma string formatada com as informações de uma tarefa de trabalho.
-    - TarefaTrabalhoFactory.criar_tarefa(titulo, descricao): Método que cria e retorna uma tarefa de trabalho com o título e descrição especificados.
-    - TarefaComPrioridade.exibir(): Método que retorna uma string formatada com as informações de uma tarefa com prioridade.
-    - TarefaComPrioridadeFactory.criar_tarefa(titulo, descricao): Método que cria e retorna uma tarefa com prioridade com o título e descrição especificados.
 """
 
 from abc import ABC, abstractmethod
@@ -28,27 +18,113 @@ from abc import ABC, abstractmethod
 from tarefa_classes.tarefa import Tarefa, TarefaBase
 
 class TarefaFactory(ABC):
+    """
+    Classe abstrata que define uma fábrica de tarefas.
 
+    Métodos abstratos:
+        - criar_tarefa(self, titulo: str, descricao: str) -> Tarefa: Cria e retorna uma nova instância de Tarefa.
+
+    Atributos:
+        - Nenhum atributo na classe abstrata.
+    """
     @abstractmethod
     def criar_tarefa(self) -> Tarefa:
+        """
+        Método abstrato para criar uma nova tarefa.
+
+        Parâmetros:
+            - titulo (str): O título da tarefa.
+            - descricao (str): A descrição da tarefa.
+
+        Retorna:
+            - Tarefa: Uma nova instância de Tarefa.
+        """
         pass
 
 
 class TarefaTrabalho(TarefaBase):
+    """
+    Classe que representa uma tarefa de trabalho.
+
+    Métodos:
+        - exibir(self) -> str: Retorna uma string formatada com os detalhes da tarefa de trabalho.
+
+    Atributos:
+        - Nenhum atributo específico nesta classe. Os atributos são herdados da classe TarefaBase.
+    """
     def exibir(self) -> str:
+        """
+        Retorna uma string formatada com os detalhes da tarefa de trabalho.
+
+        Retorna:
+            - str: Uma string com os detalhes da tarefa de trabalho.
+        """
         return f'Tarefa de Trabalho\n{super().exibir()}\n'
     
 
 class TarefaComPrioridade(TarefaBase):
+    """
+    Classe que representa uma tarefa com prioridade.
+
+    Métodos:
+        - exibir(self) -> str: Retorna uma string formatada com os detalhes da tarefa com prioridade.
+
+    Atributos:
+        - Nenhum atributo específico nesta classe. Os atributos são herdados da classe TarefaBase.
+    """
     def exibir(self) -> str:
+        """
+        Retorna uma string formatada com os detalhes da tarefa com prioridade.
+
+        Retorna:
+            - str: Uma string com os detalhes da tarefa com prioridade.
+        """
         return f'Tarefa com prioridade\n{super().exibir()}\n'
 
 
 class TarefaTrabalhoFactory(TarefaFactory):
+    """
+    Classe que implementa a fábrica de tarefas de trabalho.
+
+    Métodos:
+        - criar_tarefa(self, titulo: str, descricao: str) -> Tarefa: Cria e retorna uma nova instância de TarefaTrabalho.
+
+    Atributos:
+        - Nenhum atributo específico nesta classe. Os atributos são herdados da classe TarefaFactory.
+    """
     def criar_tarefa(self, titulo: str, descricao: str) -> Tarefa:
+        """
+        Cria e retorna uma nova instância de TarefaTrabalho.
+
+        Parâmetros:
+            - titulo (str): O título da tarefa.
+            - descricao (str): A descrição da tarefa.
+
+        Retorna:
+            - TarefaTrabalho: Uma nova instância de TarefaTrabalho.
+        """
         return TarefaTrabalho(titulo, descricao)
     
 
 class TarefaComPrioridadeFactory(TarefaFactory):
+    """
+    Classe que implementa a fábrica de tarefas com prioridade.
+
+    Métodos:
+        - criar_tarefa(self, titulo: str, descricao: str) -> Tarefa: Cria e retorna uma nova instância de TarefaComPrioridade.
+
+    Atributos:
+        - Nenhum atributo específico nesta classe. Os atributos são herdados da classe TarefaFactory.
+    """
     def criar_tarefa(self, titulo: str, descricao: str) -> Tarefa:
+        """
+        Cria e retorna uma nova instância de TarefaComPrioridade.
+
+        Parâmetros:
+            - titulo (str): O título da tarefa.
+            - descricao (str): A descrição da tarefa.
+
+        Retorna:
+            - TarefaComPrioridade: Uma nova instância de TarefaComPrioridade.
+        """
         return TarefaComPrioridade(titulo, descricao)

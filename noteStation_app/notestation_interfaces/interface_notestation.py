@@ -14,29 +14,6 @@ Módulos importados:
 
     - tarefa_classes: Módulo contendo as classes TarefaBase, TarefaComLembrete, TarefaComPrazo, TarefaOrganizador e suas fábricas.
     - gerenciamento_arquivos: Módulo contendo o Encoder personalizado TarefaEncoder para serialização das tarefas em formato JSON.
-
-Atributos:
-    - organizador: Uma instância da classe TarefaOrganizador que gerencia as tarefas do programa.
-    - tPrioridade: Uma instância da classe TarefaComPrioridadeFactory que é utilizada para criar tarefas com prioridade.
-    - tTrabalho: Uma instância da classe TarefaTrabalhoFactory que é utilizada para criar tarefas de trabalho.
-    - dir: Uma string representando o diretório do arquivo JSON usado para armazenar as tarefas.
-
-Métodos:
-    - carregar_arquivo(): Carrega as tarefas a partir do arquivo JSON especificado no atributo "dir" e as adiciona ao organizador.
-    - exibir(): Exibe a interface gráfica principal do programa, mostrando a lista de tarefas e opções para interagir com elas.
-    - visualizar_tarefa(Sender): Exibe os detalhes de uma tarefa em uma janela popup quando o usuário clica em "Visualizar tarefa".
-    - editar_tarefa_window(Sender): Abre uma janela popup para editar os atributos de uma tarefa quando o usuário clica em "Editar tarefa".
-    - editar_tarefa(Sender): Atualiza os atributos de uma tarefa após o usuário realizar as alterações na janela de edição.
-    - marcar_concluida(Sender): Marca uma tarefa como concluída e exibe uma mensagem em uma janela popup.
-    - atualizar_lista(): Atualiza a lista de tarefas exibida na interface gráfica após modificações (adicionar, editar, excluir tarefas).
-    - exibir_lembrete(): Exibe ou oculta o campo de lembrete dependendo do valor do checkbox "Lembrete".
-    - exibir_prazo(): Exibe ou oculta o campo de prazo dependendo do valor do checkbox "Prazo".
-    - checar_tarefa(titulo): Verifica se o título da tarefa já existe na lista de títulos de tarefas exibida na interface gráfica.
-    - criar_tarefa_popup(): Abre uma janela popup para criar uma nova tarefa quando o usuário clica em "Adicionar tarefa".
-    - criar_tarefa(): Cria uma nova tarefa com os atributos especificados pelo usuário na janela de criação e a adiciona ao organizador.
-    - excluir_tarefa(Sender): Exclui uma tarefa selecionada na lista quando o usuário clica em "Excluir tarefa".
-    - desfazer_operacao(): Desfaz a última operação realizada pelo usuário (adicionar, editar ou excluir tarefa).
-    - ordenar_lista(Sender): Ordena a lista de tarefas exibida na interface gráfica de acordo com o filtro especificado (título, data de criação ou tipo de tarefa).
 """
 
 import dearpygui.dearpygui as dpg
@@ -53,7 +30,39 @@ from gerenciamento_arquivos import *
 
 
 class TelaInicial:
+    """
+    Classe responsável por representar a tela inicial do programa e gerenciar as tarefas e a interação com o usuário.
+
+    Atributos:
+        - organizador (TarefaOrganizador): Instância da classe TarefaOrganizador que gerencia as tarefas do programa.
+        - tPrioridade (TarefaComPrioridadeFactory): Instância da classe TarefaComPrioridadeFactory utilizada para criar tarefas com prioridade.
+        - tTrabalho (TarefaTrabalhoFactory): Instância da classe TarefaTrabalhoFactory utilizada para criar tarefas de trabalho.
+        - dir (str): Diretório do arquivo JSON usado para armazenar as tarefas.
+
+    Métodos:
+        - carregar_arquivo()
+        - exibir()
+        - visualizar_tarefa(Sender)
+        - editar_tarefa_window(Sender)
+        - editar_tarefa(Sender)
+        - marcar_concluida(Sender)
+        - atualizar_lista()
+        - exibir_lembrete()
+        - exibir_prazo()
+        - checar_tarefa(titulo)
+        - criar_tarefa_popup()
+        - criar_tarefa()
+        - excluir_tarefa(Sender)
+        - desfazer_operacao()
+        - ordenar_lista(Sender)
+    """
     def __init__(self, dir):
+        """
+        Inicializa a classe TelaInicial.
+
+        Atributos:
+            - dir (str): O diretório do arquivo JSON usado para armazenar as tarefas.
+        """
         self.organizador = TarefaOrganizador()
         self.tPrioridade = TarefaComPrioridadeFactory()
         self.tTrabalho = TarefaTrabalhoFactory()
@@ -62,6 +71,9 @@ class TelaInicial:
         self.carregar_arquivo()
 
     def carregar_arquivo(self):
+        """
+        Carrega as tarefas a partir do arquivo JSON especificado no atributo "dir" e as adiciona ao organizador.
+        """
         if os.path.exists(self.dir):
             with open(self.dir, "r", encoding='UTF-8') as arquivo:
                 lista_tarefas = json.load(arquivo)
@@ -69,7 +81,6 @@ class TelaInicial:
 
                 for tarefa_id in lista_tarefas:
                     tarefa_obj = lista_tarefas[tarefa_id]
-                    print(tarefa_obj)
 
                     tarefa = None
                     if tarefa_obj['prioridade'] == True:
@@ -96,6 +107,9 @@ class TelaInicial:
                 arquivo.write("")
 
     def exibir(self):
+        """
+        Exibe a interface gráfica principal do programa, mostrando a lista de tarefas e opções para interagir com elas.
+        """
         self.titulos = [self.organizador.checkTarefaDecorator(tarefa).titulo for tarefa in self.organizador.tarefas]
 
 
@@ -138,6 +152,12 @@ class TelaInicial:
         dpg.destroy_context()
 
     def visualizar_tarefa(self, Sender):
+        """
+        Exibe os detalhes de uma tarefa em uma janela popup quando o usuário clica em "Visualizar tarefa".
+
+        Atributos:
+            - Sender: O objeto que enviou o sinal de clique.
+        """
         tarefa_titulo = dpg.get_value(dpg.get_item_drag_callback(Sender))
         tarefa = self.organizador.get_tarefa(tarefa_titulo)
 
@@ -150,6 +170,12 @@ class TelaInicial:
                 dpg.add_text(tarefa.exibir(), tag="VisuText")
 
     def editar_tarefa_window(self, Sender):
+        """
+        Abre uma janela popup para editar os atributos de uma tarefa quando o usuário clica em "Editar tarefa".
+
+        Atributos:
+            - Sender: O objeto que enviou o sinal de clique.
+        """
         tarefa_titulo = dpg.get_value(dpg.get_item_drag_callback(Sender))
         tarefa = self.organizador.get_tarefa(tarefa_titulo)
         tarefa = self.organizador.checkTarefaDecorator(tarefa)
@@ -174,6 +200,12 @@ class TelaInicial:
                 dpg.add_button(label="Atualizar tarefa", callback=self.editar_tarefa, tag="AtualizarButton", drag_callback=self.listbox)
 
     def editar_tarefa(self, Sender):
+        """
+        Atualiza os atributos de uma tarefa após o usuário realizar as alterações na janela de edição.
+
+        Atributos:
+            - Sender: O objeto que enviou o sinal de clique.
+        """
         tarefa_titulo = dpg.get_value(dpg.get_item_drag_callback(Sender))
         tarefa = self.organizador.get_tarefa(tarefa_titulo)
 
@@ -189,6 +221,12 @@ class TelaInicial:
         self.atualizar_lista()
 
     def marcar_concluida(self, Sender):
+        """
+        Marca uma tarefa como concluída e exibe uma mensagem em uma janela popup.
+
+        Atributos:
+            - Sender: O objeto que enviou o sinal de clique.
+        """
         tarefa_titulo = dpg.get_value(dpg.get_item_drag_callback(Sender))
         tarefa = self.organizador.get_tarefa(tarefa_titulo)
 
@@ -199,6 +237,9 @@ class TelaInicial:
             dpg.add_text(f'Tarefa {tarefa_titulo} concluída!')
     
     def atualizar_lista(self):
+        """
+        Atualiza a lista de tarefas exibida na interface gráfica após modificações (adicionar, editar, excluir tarefas).
+        """
         self.titulos = [self.organizador.checkTarefaDecorator(tarefa).titulo for tarefa in self.organizador.tarefas]
         dpg.configure_item(self.listbox, items=self.titulos)
 
@@ -224,14 +265,29 @@ class TelaInicial:
             )
         
     def exibir_lembrete(self):
+        """
+        Exibe ou oculta o campo de lembrete dependendo do valor do checkbox "Lembrete".
+        """
         check = dpg.get_value("tarefa_lembrete_check")
         dpg.configure_item("lembrete_input", show=check)
     
     def exibir_prazo(self):
+        """
+        Exibe ou oculta o campo de prazo dependendo do valor do checkbox "Prazo".
+        """
         check = dpg.get_value("tarefa_prazo_check")
         dpg.configure_item("prazo_input", show=check)
 
     def checar_tarefa(self, titulo):
+        """
+        Verifica se o título da tarefa já existe na lista de títulos de tarefas exibida na interface gráfica.
+
+        Atributos:
+            - titulo (str): O título da tarefa a ser verificado.
+
+        Retorna:
+            - bool: True se o título não existir, False caso contrário.
+        """
         for tar_titulo in self.titulos:
             if tar_titulo == titulo:
                     return False
@@ -239,6 +295,9 @@ class TelaInicial:
         return True
 
     def criar_tarefa_popup(self):
+        """
+        Abre uma janela popup para criar uma nova tarefa quando o usuário clica em "Adicionar tarefa".
+        """
         pop_up_criar = dpg.popup(parent="openPopUp", modal=True, tag="popUpCriar", mousebutton=dpg.mvMouseButton_Left)
 
         with pop_up_criar:
@@ -257,6 +316,9 @@ class TelaInicial:
             dpg.add_button(label="Adicionar", tag="adicionar_button", callback=self.criar_tarefa)
 
     def criar_tarefa(self):
+        """
+        Cria uma nova tarefa com os atributos especificados pelo usuário na janela de criação e a adiciona ao organizador.
+        """
         titulo = dpg.get_value("tarefa_titulo")
         descricao = dpg.get_value("tarefa_descricao")
         
@@ -291,6 +353,12 @@ class TelaInicial:
             return
 
     def excluir_tarefa(self, Sender):
+        """
+        Exclui uma tarefa selecionada na lista quando o usuário clica em "Excluir tarefa".
+
+        Atributos:
+            - Sender: O objeto que enviou o sinal de clique.
+        """
         item_titulo = dpg.get_value(dpg.get_item_drag_callback(Sender))
 
         for tarefa in self.organizador.tarefas:
@@ -305,10 +373,19 @@ class TelaInicial:
             print(f'Tarefa não encontrada')
 
     def desfazer_operacao(self):
+        """
+        Desfaz a última operação realizada pelo usuário (adicionar, editar, excluir, concluir e ordenar).
+        """
         self.organizador.desfazer()
         self.atualizar_lista()
 
     def ordenar_lista(self, Sender):
+        """
+        Ordena a lista de tarefas exibida na interface gráfica de acordo com o filtro especificado (título, data de criação ou tipo de tarefa).
+
+        Atributos:
+            - Sender: O objeto que enviou o sinal de clique.
+        """
         filtro = dpg.get_item_configuration(Sender)['label']
         
         self.organizador.sort_tarefas(filtro)
