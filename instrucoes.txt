@@ -21,4 +21,8 @@ INSTALAR PACOTES NO AMBIENTE VIRTUAL
 RODANDO O APLICATIVO
 
     Para rodar o aplicativo, você pode executá-lo no terminal de comando no diretório raiz do projeto
-    inserindo: "python notestation_App\\main.py "
+    inserindo: "python notestation_App\\main.py"
+
+ACESSAR DOCUMENTAÇÃO
+
+    Na pasta "build" do projeto, está a documentação do projeto, acessando o arquivo 'index.html'.
